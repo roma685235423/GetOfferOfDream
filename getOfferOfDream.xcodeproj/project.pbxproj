@@ -11,7 +11,32 @@
 		BA74EBA82B5707F800AEBDE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74EBA72B5707F800AEBDE6 /* ViewController.swift */; };
 		BA74EBAD2B5707F900AEBDE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA74EBAC2B5707F900AEBDE6 /* Assets.xcassets */; };
 		BA74EBB02B5707F900AEBDE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA74EBAE2B5707F900AEBDE6 /* LaunchScreen.storyboard */; };
+		BA74EC0B2B5713B300AEBDE6 /* getOfferCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA74EC0A2B5713B300AEBDE6 /* getOfferCore.framework */; };
+		BA74EC0C2B5713B300AEBDE6 /* getOfferCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA74EC0A2B5713B300AEBDE6 /* getOfferCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BA74EC0F2B5713B900AEBDE6 /* getOfferDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA74EC0E2B5713B900AEBDE6 /* getOfferDI.framework */; };
+		BA74EC102B5713B900AEBDE6 /* getOfferDI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA74EC0E2B5713B900AEBDE6 /* getOfferDI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BA74EC122B5713BE00AEBDE6 /* getOfferNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA74EC112B5713BE00AEBDE6 /* getOfferNetwork.framework */; };
+		BA74EC132B5713BE00AEBDE6 /* getOfferNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA74EC112B5713BE00AEBDE6 /* getOfferNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BA74EC152B5713C300AEBDE6 /* getOfferUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA74EC142B5713C300AEBDE6 /* getOfferUI.framework */; };
+		BA74EC162B5713C300AEBDE6 /* getOfferUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA74EC142B5713C300AEBDE6 /* getOfferUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BA74EC0D2B5713B300AEBDE6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BA74EC162B5713C300AEBDE6 /* getOfferUI.framework in Embed Frameworks */,
+				BA74EC0C2B5713B300AEBDE6 /* getOfferCore.framework in Embed Frameworks */,
+				BA74EC102B5713B900AEBDE6 /* getOfferDI.framework in Embed Frameworks */,
+				BA74EC132B5713BE00AEBDE6 /* getOfferNetwork.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BA74EBA02B5707F800AEBDE6 /* getOfferOfDream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getOfferOfDream.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +45,10 @@
 		BA74EBAC2B5707F900AEBDE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA74EBAF2B5707F900AEBDE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA74EBB12B5707F900AEBDE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA74EC0A2B5713B300AEBDE6 /* getOfferCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = getOfferCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA74EC0E2B5713B900AEBDE6 /* getOfferDI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = getOfferDI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA74EC112B5713BE00AEBDE6 /* getOfferNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = getOfferNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA74EC142B5713C300AEBDE6 /* getOfferUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = getOfferUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +56,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA74EC152B5713C300AEBDE6 /* getOfferUI.framework in Frameworks */,
+				BA74EC0B2B5713B300AEBDE6 /* getOfferCore.framework in Frameworks */,
+				BA74EC0F2B5713B900AEBDE6 /* getOfferDI.framework in Frameworks */,
+				BA74EC122B5713BE00AEBDE6 /* getOfferNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +71,7 @@
 			children = (
 				BA74EBA22B5707F800AEBDE6 /* getOfferOfDream */,
 				BA74EBA12B5707F800AEBDE6 /* Products */,
+				BA74EC092B5713B300AEBDE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +95,17 @@
 			path = getOfferOfDream;
 			sourceTree = "<group>";
 		};
+		BA74EC092B5713B300AEBDE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA74EC142B5713C300AEBDE6 /* getOfferUI.framework */,
+				BA74EC112B5713BE00AEBDE6 /* getOfferNetwork.framework */,
+				BA74EC0E2B5713B900AEBDE6 /* getOfferDI.framework */,
+				BA74EC0A2B5713B300AEBDE6 /* getOfferCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,6 +116,7 @@
 				BA74EB9C2B5707F800AEBDE6 /* Sources */,
 				BA74EB9D2B5707F800AEBDE6 /* Frameworks */,
 				BA74EB9E2B5707F800AEBDE6 /* Resources */,
+				BA74EC0D2B5713B300AEBDE6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -284,7 +330,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,7 +363,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

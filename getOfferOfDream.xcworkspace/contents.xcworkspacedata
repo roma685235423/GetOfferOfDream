@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:getOfferOfDream.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:getOfferNetwork/getOfferNetwork.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:getOfferUI/getOfferUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:getOfferDI/getOfferDI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:getOfferCore/getOfferCore.xcodeproj">
+   </FileRef>
+</Workspace>
