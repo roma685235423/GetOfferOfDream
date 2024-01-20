@@ -5,15 +5,15 @@
       location = "group:getOfferOfDream.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:getOfferNetwork/getOfferNetwork.xcodeproj">
+      location = "group:GetOfferCore/GetOfferCore.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:getOfferUI/getOfferUI.xcodeproj">
+      location = "group:GetOfferDI/GetOfferDI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:getOfferDI/getOfferDI.xcodeproj">
+      location = "group:GetOfferNetwork/GetOfferNetwork.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:getOfferCore/getOfferCore.xcodeproj">
+      location = "group:GetOfferUI/GetOfferUI.xcodeproj">
    </FileRef>
 </Workspace>
