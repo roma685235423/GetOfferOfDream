@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		27E46DBBB2C76BDC270965D8 /* GetOfferDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547DD66103BED052F43579DC /* GetOfferDI.swift */; };
+		BA6417782B5C761E004A5CBB /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6417772B5C761E004A5CBB /* Assembly.swift */; };
+		BA64177A2B5C7680004A5CBB /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6417792B5C7680004A5CBB /* Dependency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +29,8 @@
 		4F8042CC3E80875A409EEEF0 /* GetOfferDI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GetOfferDI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		547DD66103BED052F43579DC /* GetOfferDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOfferDI.swift; sourceTree = "<group>"; };
 		7BEDC01B710D19AE12FD3AC2 /* GetOfferDI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GetOfferDI-Info.plist"; sourceTree = "<group>"; };
+		BA6417772B5C761E004A5CBB /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		BA6417792B5C7680004A5CBB /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				547DD66103BED052F43579DC /* GetOfferDI.swift */,
+				BA6417772B5C761E004A5CBB /* Assembly.swift */,
+				BA6417792B5C7680004A5CBB /* Dependency.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -125,8 +131,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 0583DDA79D7A121C9B989069 /* Build configuration list for PBXProject "GetOfferDI" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -161,7 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA64177A2B5C7680004A5CBB /* Dependency.swift in Sources */,
 				27E46DBBB2C76BDC270965D8 /* GetOfferDI.swift in Sources */,
+				BA6417782B5C761E004A5CBB /* Assembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

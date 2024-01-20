@@ -10,7 +10,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .green
         GetOfferCore.test()
-        GetOfferDI.test()
         GetOfferNetwork.test()
         GetOfferUI.test()
     }
