@@ -1,8 +1,8 @@
 import Foundation
 
-public final class GetOfferDI {
+public final class GetOfferUI {
     
     public static func test() {
-        print("✅ - GetOfferDI")
+        print("✅ - GetOfferUI")
     }
 }
