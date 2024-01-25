@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E8B0C02F7B02657E8FE9736 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896453808D37EEA7101BF255 /* Assembly.swift */; };
 		27E46DBBB2C76BDC270965D8 /* GetOfferDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547DD66103BED052F43579DC /* GetOfferDI.swift */; };
+		9B87BE1C8393C8C99C5D280B /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4197253D4411ED3D68A2E74 /* Dependency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +29,8 @@
 		4F8042CC3E80875A409EEEF0 /* GetOfferDI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GetOfferDI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		547DD66103BED052F43579DC /* GetOfferDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOfferDI.swift; sourceTree = "<group>"; };
 		7BEDC01B710D19AE12FD3AC2 /* GetOfferDI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GetOfferDI-Info.plist"; sourceTree = "<group>"; };
+		896453808D37EEA7101BF255 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		F4197253D4411ED3D68A2E74 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,8 @@
 		0E4B875AB70FD39E789FCF51 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				896453808D37EEA7101BF255 /* Assembly.swift */,
+				F4197253D4411ED3D68A2E74 /* Dependency.swift */,
 				547DD66103BED052F43579DC /* GetOfferDI.swift */,
 			);
 			path = Sources;
@@ -161,6 +167,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8B0C02F7B02657E8FE9736 /* Assembly.swift in Sources */,
+				9B87BE1C8393C8C99C5D280B /* Dependency.swift in Sources */,
 				27E46DBBB2C76BDC270965D8 /* GetOfferDI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
