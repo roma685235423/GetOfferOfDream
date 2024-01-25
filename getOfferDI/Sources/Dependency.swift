@@ -11,7 +11,7 @@ public class Dependency<T> {
     
     // MARK: life cycle
     
-    public init(wrappedValue: T) {
+    public init() {
         self.wrappedValue = Container.shared.resolve()
     }
 }

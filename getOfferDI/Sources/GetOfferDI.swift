@@ -1,6 +1,6 @@
 import Foundation
 
-// MARK: - GetOfferDI
+// MARK: - Container
 
 public final class Container {
     
