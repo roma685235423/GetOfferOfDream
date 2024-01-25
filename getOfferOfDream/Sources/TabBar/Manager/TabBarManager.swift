@@ -11,6 +11,7 @@ final class TabBarManager {
 extension TabBarManager: TabBarManagerProtocol {
     func setup(tabBar: UITabBar) {
         self.tabBar = tabBar
-        self.tabBar?.tintColor = .blue
+        self.tabBar?.tintColor = .black
+        self.tabBar?.backgroundColor = .white
     }
 }

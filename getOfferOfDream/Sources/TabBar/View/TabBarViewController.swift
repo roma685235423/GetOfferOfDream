@@ -14,27 +14,64 @@ private extension TabBarViewController {
 final class TabBarViewController: UITabBarController {
     
     // MARK: Private properties
-//    private let presenter: TabBarPresenterProtocol
     private let constants = ConstantLocalalizedString()
     private lazy var myTabBar: UITabBar = {
         return UITabBar(frame: .zero)
     }()
     
     // MARK: Life cycle
-//    init(presenter: TabBarPresenterProtocol) {
-//        self.presenter = presenter
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarGenerator()
     }
 }
 
-// MARK: - TabBarViewInput
+// MARK: - Private methods
 
-//extension TabBarViewController: TabBarViewInput { }
+private extension TabBarViewController {
+    
+    func itemGenerator(viewController: UIViewController, title: String, image: UIImage?, tag: Int = 0) -> UINavigationController {
+        let item = UITabBarItem(title: title, image: image, tag: tag)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.tabBarItem = item
+        return navigationController
+    }
+    
+    func tabBarGenerator() {
+        @Dependency var mainItem: MainItemViewController
+        @Dependency var favoritesItem: FavoriteItemViewController
+        @Dependency var feedbackItem: FeedbackItemViewController
+        
+        let thinConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .light)
+
+        viewControllers = [
+            itemGenerator(
+                viewController: mainItem,
+                title: constants.first,
+                image: UIImage(
+                    systemName: "book",
+                    withConfiguration: thinConfiguration
+                )
+            ),
+            itemGenerator(
+                viewController: favoritesItem,
+                title: constants.second,
+                image: UIImage(
+                    systemName: "bookmark",
+                    withConfiguration: thinConfiguration
+                ),
+                tag: 1
+            ),
+            itemGenerator(
+                viewController: feedbackItem,
+                title: constants.third,
+                image: UIImage(
+                    systemName: "exclamationmark.bubble",
+                    withConfiguration: thinConfiguration
+                ),
+                tag: 2
+            )
+        ]
+
+    }
+}

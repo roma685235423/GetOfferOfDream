@@ -18,13 +18,13 @@
 		BAAB14042B629955000000D8 /* TabBarManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14032B629955000000D8 /* TabBarManagerProtocol.swift */; };
 		BAAB14062B629A40000000D8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BAAB14052B629A40000000D8 /* Localizable.xcstrings */; };
 		BAAB140A2B629CFD000000D8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14092B629CFD000000D8 /* TabBarViewController.swift */; };
-		BAAB140C2B629E93000000D8 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB140B2B629E93000000D8 /* TabBarPresenter.swift */; };
 		BAAB14142B62A507000000D8 /* FavoriteItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14132B62A507000000D8 /* FavoriteItemViewController.swift */; };
 		BAAB14162B62A572000000D8 /* FeedbackItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14152B62A572000000D8 /* FeedbackItemViewController.swift */; };
 		BAAB141B2B62A6B7000000D8 /* TabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB141A2B62A6B7000000D8 /* TabBarAssembly.swift */; };
-		BAAB141D2B62A93C000000D8 /* TabBarViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB141C2B62A93C000000D8 /* TabBarViewInput.swift */; };
-		BAAB141F2B62F33E000000D8 /* TabBarPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB141E2B62F33E000000D8 /* TabBarPresenterProtocol.swift */; };
 		BAAB14212B62F9DE000000D8 /* MainItemAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14202B62F9DE000000D8 /* MainItemAssembly.swift */; };
+		BAAB14232B62FB2F000000D8 /* FavoriteItemAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14222B62FB2F000000D8 /* FavoriteItemAssembly.swift */; };
+		BAAB14252B62FBE7000000D8 /* FeedbackItemAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14242B62FBE7000000D8 /* FeedbackItemAssembly.swift */; };
+		BAAB14272B6301DC000000D8 /* AssemblySetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14262B6301DC000000D8 /* AssemblySetupManager.swift */; };
 		BB545ADCC3EBD198B5BBA6D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864C8E2356586284C25D5683 /* AppDelegate.swift */; };
 		BFF5ED1E3E19FA2EAAF705A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97A277AFBFE839936BDEB82 /* LaunchScreen.storyboard */; };
 		F12850A972926F3DDDB48D8B /* GetOfferNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3455DB4310368D370A25AB7 /* GetOfferNetwork.framework */; };
@@ -58,13 +58,13 @@
 		BAAB14052B629A40000000D8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BAAB14082B629C55000000D8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		BAAB14092B629CFD000000D8 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		BAAB140B2B629E93000000D8 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		BAAB14132B62A507000000D8 /* FavoriteItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemViewController.swift; sourceTree = "<group>"; };
 		BAAB14152B62A572000000D8 /* FeedbackItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackItemViewController.swift; sourceTree = "<group>"; };
 		BAAB141A2B62A6B7000000D8 /* TabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAssembly.swift; sourceTree = "<group>"; };
-		BAAB141C2B62A93C000000D8 /* TabBarViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewInput.swift; sourceTree = "<group>"; };
-		BAAB141E2B62F33E000000D8 /* TabBarPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenterProtocol.swift; sourceTree = "<group>"; };
 		BAAB14202B62F9DE000000D8 /* MainItemAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainItemAssembly.swift; sourceTree = "<group>"; };
+		BAAB14222B62FB2F000000D8 /* FavoriteItemAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemAssembly.swift; sourceTree = "<group>"; };
+		BAAB14242B62FBE7000000D8 /* FeedbackItemAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackItemAssembly.swift; sourceTree = "<group>"; };
+		BAAB14262B6301DC000000D8 /* AssemblySetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblySetupManager.swift; sourceTree = "<group>"; };
 		D057454B4348C2DE5D5C0E50 /* TuistBundle+GetOfferOfDream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+GetOfferOfDream.swift"; sourceTree = "<group>"; };
 		E3455DB4310368D370A25AB7 /* GetOfferNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GetOfferNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E603F1E6173F00F2862F730A /* GetOfferCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GetOfferCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,11 +107,11 @@
 		257864072D848EBBF2DCCA4A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				BBEE6B647D8FC28961929B26 /* App */,
 				BAAB14172B62A5C9000000D8 /* AssemblyManager */,
 				BAAB140F2B62A2E7000000D8 /* FeedbackItem */,
 				BAAB140E2B62A2CF000000D8 /* FavoriteItem */,
 				BAAB140D2B62A2AA000000D8 /* MainItem */,
-				BBEE6B647D8FC28961929B26 /* App */,
 				BAAB13FD2B62981A000000D8 /* TabBar */,
 			);
 			path = Sources;
@@ -142,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				BAAB14002B629859000000D8 /* View */,
-				BAAB13FF2B629851000000D8 /* Presenter */,
 				BAAB13FE2B629844000000D8 /* Manager */,
 			);
 			path = TabBar;
@@ -157,20 +156,10 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		BAAB13FF2B629851000000D8 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				BAAB140B2B629E93000000D8 /* TabBarPresenter.swift */,
-				BAAB141E2B62F33E000000D8 /* TabBarPresenterProtocol.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
 		BAAB14002B629859000000D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				BAAB14092B629CFD000000D8 /* TabBarViewController.swift */,
-				BAAB141C2B62A93C000000D8 /* TabBarViewInput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -237,6 +226,8 @@
 			children = (
 				BAAB141A2B62A6B7000000D8 /* TabBarAssembly.swift */,
 				BAAB14202B62F9DE000000D8 /* MainItemAssembly.swift */,
+				BAAB14222B62FB2F000000D8 /* FavoriteItemAssembly.swift */,
+				BAAB14242B62FBE7000000D8 /* FeedbackItemAssembly.swift */,
 			);
 			path = Assemblies;
 			sourceTree = "<group>";
@@ -244,6 +235,7 @@
 		BAAB14192B62A5FC000000D8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BAAB14262B6301DC000000D8 /* AssemblySetupManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -360,13 +352,13 @@
 				BAAB14142B62A507000000D8 /* FavoriteItemViewController.swift in Sources */,
 				061259ECEC374AE660F74ED2 /* TuistAssets+GetOfferOfDream.swift in Sources */,
 				BAAB141B2B62A6B7000000D8 /* TabBarAssembly.swift in Sources */,
-				BAAB141D2B62A93C000000D8 /* TabBarViewInput.swift in Sources */,
 				7D62BD09784EB68C57D7F782 /* TuistBundle+GetOfferOfDream.swift in Sources */,
-				BAAB141F2B62F33E000000D8 /* TabBarPresenterProtocol.swift in Sources */,
 				BB545ADCC3EBD198B5BBA6D7 /* AppDelegate.swift in Sources */,
+				BAAB14272B6301DC000000D8 /* AssemblySetupManager.swift in Sources */,
 				BAAB14212B62F9DE000000D8 /* MainItemAssembly.swift in Sources */,
 				BAAB14022B6298CC000000D8 /* TabBarManager.swift in Sources */,
-				BAAB140C2B629E93000000D8 /* TabBarPresenter.swift in Sources */,
+				BAAB14252B62FBE7000000D8 /* FeedbackItemAssembly.swift in Sources */,
+				BAAB14232B62FB2F000000D8 /* FavoriteItemAssembly.swift in Sources */,
 				BAAB14162B62A572000000D8 /* FeedbackItemViewController.swift in Sources */,
 				BAAB140A2B629CFD000000D8 /* TabBarViewController.swift in Sources */,
 				70C856346CADD994FE287DB6 /* MainItemViewController.swift in Sources */,

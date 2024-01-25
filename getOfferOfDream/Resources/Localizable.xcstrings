@@ -13,7 +13,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "второй"
+            "value" : "Подготовка"
           }
         }
       }
@@ -30,7 +30,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "первый"
+            "value" : "Избранное"
           }
         }
       }
@@ -47,7 +47,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "третий"
+            "value" : "Обратная связь"
           }
         }
       }
