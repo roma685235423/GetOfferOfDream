@@ -68,6 +68,23 @@
           }
         }
       }
+    },
+    "quizTabBarItem" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Квиз"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

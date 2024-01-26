@@ -7,7 +7,7 @@ final class ProfileAssembly: Assembly {
     
     func assemble() {
         Container.shared.register(service: ProfileItemViewController.self) { _ in
-        ProfileItemViewController()
+            ProfileItemViewController()
         }
         @Dependency var view: ProfileItemViewController
         

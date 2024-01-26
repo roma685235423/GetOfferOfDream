@@ -8,6 +8,6 @@ class ProfileItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .brown
+        view.backgroundColor = .brown.withAlphaComponent(0.9)
     }
 }

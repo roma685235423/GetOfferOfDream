@@ -10,11 +10,12 @@ final class AssemblySetupManager {
     
     // MARK: Private properties
     private let assemblies: [Assembly] = [
-    MainItemAssembly(),
-    FavoriteItemAssembly(),
-    FeedbackItemAssembly(),
-    ProfileAssembly(),
-    TabBarAssembly()
+        MainItemAssembly(),
+        FavoriteItemAssembly(),
+        QuizItemAssembly(),
+        FeedbackItemAssembly(),
+        ProfileAssembly(),
+        TabBarAssembly()
     ]
 }
 

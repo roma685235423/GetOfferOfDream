@@ -10,7 +10,7 @@ final class TabBarAssembly: Assembly {
             TabBarManager()
         }
         Container.shared.register(service: TabBarViewController.self) { _ in
-             TabBarViewController()
+            TabBarViewController()
         }
         @Dependency var view: TabBarViewController
         @Dependency var tabBarManager: TabBarManager
