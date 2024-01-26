@@ -89,3 +89,6 @@ iOSInjectionProject/
 *.xcworkspace
 *.xcscheme
 *.pbxproj
+getOfferOfDream.xcodeproj/xcshareddata/xcschemes/getOfferOfDream.xcscheme
+*.pbxproj
+getOfferOfDream.xcodeproj/project.pbxproj
