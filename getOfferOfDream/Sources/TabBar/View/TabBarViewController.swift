@@ -8,9 +8,7 @@ final class TabBarViewController: UITabBarController {
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
         tabBarGenerator()
-        setSelectedImage(index: 0)
     }
 }
 
@@ -48,26 +46,4 @@ private extension TabBarViewController {
             itemGenerator(viewController: profileViewController, title: "Profile", type: .profile)
         ]
     }
-    
-    func setSelectedImage(index: Int) {
-        guard 
-            let items = tabBar.items,
-                index < items.count
-        else { return }
-        let selectedType = TabType(rawValue: items[index].image?.accessibilityIdentifier ?? "") ?? .main
-        items[index].selectedImage = UIImage(systemName: selectedType.selectedImageName())
-    }
 }
-
-// MARK: - UITabBarControllerDelegate
-
-extension TabBarViewController: UITabBarControllerDelegate {
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        guard let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController) else {
-            return
-        }
-        setSelectedImage(index: selectedIndex)
-    }
-}
-//
