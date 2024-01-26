@@ -3,27 +3,14 @@ import GetOfferDI
 
 // MARK: - TabBarViewController
 
-private extension TabBarViewController {
-    struct ConstantLocalalizedString {
-        let main = NSLocalizedString("mainTabBarItem", comment: "")
-        let favorite = NSLocalizedString("favoriteTabBarItem", comment: "")
-        let feedback = NSLocalizedString("feedbackTabBarItem", comment: "")
-        let profile = NSLocalizedString("profileTabBarItem", comment: "")
-    }
-}
-
 final class TabBarViewController: UITabBarController {
-    
-    // MARK: Private properties
-    private let constants = ConstantLocalalizedString()
-    private lazy var myTabBar: UITabBar = {
-        return UITabBar(frame: .zero)
-    }()
     
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        delegate = self
         tabBarGenerator()
+        setSelectedImage(index: 0)
     }
 }
 
@@ -31,12 +18,22 @@ final class TabBarViewController: UITabBarController {
 
 private extension TabBarViewController {
     
-    func itemGenerator(viewController: UIViewController, title: String, image: UIImage?, tag: Int = 0) -> UINavigationController {
-        let item = UITabBarItem(title: title, image: image, tag: tag)
+    func itemGenerator(viewController: UIViewController, title: String, type: TabType, tag: Int = 0) -> UINavigationController {
+        let thinConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .light)
+        
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.tabBarItem = item
+        navigationController.tabBarItem.title = title
+        navigationController.tabBarItem.tag = tag
+        
+        let normalImage = UIImage(systemName: type.normalImageName(), withConfiguration: thinConfiguration)
+        let selectedImage = UIImage(systemName: type.selectedImageName(), withConfiguration: thinConfiguration)
+        
+        navigationController.tabBarItem.image = normalImage
+        navigationController.tabBarItem.selectedImage = selectedImage
+        
         return navigationController
     }
+
     
     func tabBarGenerator() {
         @Dependency var mainItem: MainItemViewController
@@ -44,45 +41,32 @@ private extension TabBarViewController {
         @Dependency var feedbackItem: FeedbackItemViewController
         @Dependency var profileViewController: ProfileItemViewController
         
-        let thinConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .light)
-
         viewControllers = [
-            itemGenerator(
-                viewController: mainItem,
-                title: constants.main,
-                image: UIImage(
-                    systemName: "book",
-                    withConfiguration: thinConfiguration
-                )
-            ),
-            itemGenerator(
-                viewController: favoritesItem,
-                title: constants.favorite,
-                image: UIImage(
-                    systemName: "bookmark",
-                    withConfiguration: thinConfiguration
-                ),
-                tag: 1
-            ),
-            itemGenerator(
-                viewController: feedbackItem,
-                title: constants.feedback,
-                image: UIImage(
-                    systemName: "exclamationmark.bubble",
-                    withConfiguration: thinConfiguration
-                ),
-                tag: 2
-            ),
-            itemGenerator(
-                viewController: profileViewController,
-                title: constants.profile,
-                image: UIImage(
-                    systemName: "person",
-                    withConfiguration: thinConfiguration
-                ),
-                tag: 3
-            )
+            itemGenerator(viewController: mainItem, title: "Main", type: .main),
+            itemGenerator(viewController: favoritesItem, title: "Favorites", type: .favorites),
+            itemGenerator(viewController: feedbackItem, title: "Feedback", type: .feedback),
+            itemGenerator(viewController: profileViewController, title: "Profile", type: .profile)
         ]
+    }
+    
+    func setSelectedImage(index: Int) {
+        guard 
+            let items = tabBar.items,
+                index < items.count
+        else { return }
+        let selectedType = TabType(rawValue: items[index].image?.accessibilityIdentifier ?? "") ?? .main
+        items[index].selectedImage = UIImage(systemName: selectedType.selectedImageName())
+    }
+}
 
+// MARK: - UITabBarControllerDelegate
+
+extension TabBarViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        guard let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController) else {
+            return
+        }
+        setSelectedImage(index: selectedIndex)
     }
 }
