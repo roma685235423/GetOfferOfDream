@@ -13,6 +13,7 @@ final class AssemblySetupManager {
     MainItemAssembly(),
     FavoriteItemAssembly(),
     FeedbackItemAssembly(),
+    ProfileAssembly(),
     TabBarAssembly()
     ]
 }

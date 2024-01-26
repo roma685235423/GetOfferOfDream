@@ -25,6 +25,8 @@
 		BAAB14232B62FB2F000000D8 /* FavoriteItemAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14222B62FB2F000000D8 /* FavoriteItemAssembly.swift */; };
 		BAAB14252B62FBE7000000D8 /* FeedbackItemAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14242B62FBE7000000D8 /* FeedbackItemAssembly.swift */; };
 		BAAB14272B6301DC000000D8 /* AssemblySetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB14262B6301DC000000D8 /* AssemblySetupManager.swift */; };
+		BAAB142B2B639F01000000D8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB142A2B639F01000000D8 /* ProfileViewController.swift */; };
+		BAAB142D2B639F72000000D8 /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB142C2B639F72000000D8 /* ProfileAssembly.swift */; };
 		BB545ADCC3EBD198B5BBA6D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864C8E2356586284C25D5683 /* AppDelegate.swift */; };
 		BFF5ED1E3E19FA2EAAF705A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97A277AFBFE839936BDEB82 /* LaunchScreen.storyboard */; };
 		F12850A972926F3DDDB48D8B /* GetOfferNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3455DB4310368D370A25AB7 /* GetOfferNetwork.framework */; };
@@ -65,6 +67,8 @@
 		BAAB14222B62FB2F000000D8 /* FavoriteItemAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemAssembly.swift; sourceTree = "<group>"; };
 		BAAB14242B62FBE7000000D8 /* FeedbackItemAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackItemAssembly.swift; sourceTree = "<group>"; };
 		BAAB14262B6301DC000000D8 /* AssemblySetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblySetupManager.swift; sourceTree = "<group>"; };
+		BAAB142A2B639F01000000D8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BAAB142C2B639F72000000D8 /* ProfileAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
 		D057454B4348C2DE5D5C0E50 /* TuistBundle+GetOfferOfDream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+GetOfferOfDream.swift"; sourceTree = "<group>"; };
 		E3455DB4310368D370A25AB7 /* GetOfferNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GetOfferNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E603F1E6173F00F2862F730A /* GetOfferCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GetOfferCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,7 @@
 		257864072D848EBBF2DCCA4A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				BAAB14282B639EE0000000D8 /* Profile */,
 				BBEE6B647D8FC28961929B26 /* App */,
 				BAAB14172B62A5C9000000D8 /* AssemblyManager */,
 				BAAB140F2B62A2E7000000D8 /* FeedbackItem */,
@@ -228,6 +233,7 @@
 				BAAB14202B62F9DE000000D8 /* MainItemAssembly.swift */,
 				BAAB14222B62FB2F000000D8 /* FavoriteItemAssembly.swift */,
 				BAAB14242B62FBE7000000D8 /* FeedbackItemAssembly.swift */,
+				BAAB142C2B639F72000000D8 /* ProfileAssembly.swift */,
 			);
 			path = Assemblies;
 			sourceTree = "<group>";
@@ -238,6 +244,22 @@
 				BAAB14262B6301DC000000D8 /* AssemblySetupManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		BAAB14282B639EE0000000D8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BAAB14292B639EEE000000D8 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BAAB14292B639EEE000000D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BAAB142A2B639F01000000D8 /* ProfileViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		BBD0AE6E7132159FA608C6BA /* Frameworks */ = {
@@ -350,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAAB14142B62A507000000D8 /* FavoriteItemViewController.swift in Sources */,
+				BAAB142D2B639F72000000D8 /* ProfileAssembly.swift in Sources */,
 				061259ECEC374AE660F74ED2 /* TuistAssets+GetOfferOfDream.swift in Sources */,
 				BAAB141B2B62A6B7000000D8 /* TabBarAssembly.swift in Sources */,
 				7D62BD09784EB68C57D7F782 /* TuistBundle+GetOfferOfDream.swift in Sources */,
@@ -361,6 +384,7 @@
 				BAAB14232B62FB2F000000D8 /* FavoriteItemAssembly.swift in Sources */,
 				BAAB14162B62A572000000D8 /* FeedbackItemViewController.swift in Sources */,
 				BAAB140A2B629CFD000000D8 /* TabBarViewController.swift in Sources */,
+				BAAB142B2B639F01000000D8 /* ProfileViewController.swift in Sources */,
 				70C856346CADD994FE287DB6 /* MainItemViewController.swift in Sources */,
 				BAAB14042B629955000000D8 /* TabBarManagerProtocol.swift in Sources */,
 			);

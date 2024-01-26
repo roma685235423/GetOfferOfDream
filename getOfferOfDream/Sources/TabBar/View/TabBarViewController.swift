@@ -5,9 +5,10 @@ import GetOfferDI
 
 private extension TabBarViewController {
     struct ConstantLocalalizedString {
-        let first = NSLocalizedString("firstTabBarItem", comment: "")
-        let second = NSLocalizedString("secondTabBarItem", comment: "")
-        let third = NSLocalizedString("thirdTabBarItem", comment: "")
+        let main = NSLocalizedString("mainTabBarItem", comment: "")
+        let favorite = NSLocalizedString("favoriteTabBarItem", comment: "")
+        let feedback = NSLocalizedString("feedbackTabBarItem", comment: "")
+        let profile = NSLocalizedString("profileTabBarItem", comment: "")
     }
 }
 
@@ -41,13 +42,14 @@ private extension TabBarViewController {
         @Dependency var mainItem: MainItemViewController
         @Dependency var favoritesItem: FavoriteItemViewController
         @Dependency var feedbackItem: FeedbackItemViewController
+        @Dependency var profileViewController: ProfileItemViewController
         
         let thinConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .light)
 
         viewControllers = [
             itemGenerator(
                 viewController: mainItem,
-                title: constants.first,
+                title: constants.main,
                 image: UIImage(
                     systemName: "book",
                     withConfiguration: thinConfiguration
@@ -55,7 +57,7 @@ private extension TabBarViewController {
             ),
             itemGenerator(
                 viewController: favoritesItem,
-                title: constants.second,
+                title: constants.favorite,
                 image: UIImage(
                     systemName: "bookmark",
                     withConfiguration: thinConfiguration
@@ -64,12 +66,21 @@ private extension TabBarViewController {
             ),
             itemGenerator(
                 viewController: feedbackItem,
-                title: constants.third,
+                title: constants.feedback,
                 image: UIImage(
                     systemName: "exclamationmark.bubble",
                     withConfiguration: thinConfiguration
                 ),
                 tag: 2
+            ),
+            itemGenerator(
+                viewController: profileViewController,
+                title: constants.profile,
+                image: UIImage(
+                    systemName: "person",
+                    withConfiguration: thinConfiguration
+                ),
+                tag: 3
             )
         ]
 
