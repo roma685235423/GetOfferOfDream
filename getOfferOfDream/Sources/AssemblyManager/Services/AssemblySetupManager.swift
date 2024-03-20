@@ -2,13 +2,12 @@ import Foundation
 import GetOfferDI
 
 // MARK: - AssemblySetupManager
-
 final class AssemblySetupManager {
-    
-    // MARK: Public properties
+
+    // MARK: Public Properties
     static let shared = AssemblySetupManager()
-    
-    // MARK: Private properties
+
+    // MARK: Private Properties
     private let assemblies: [Assembly] = [
         MainItemAssembly(),
         FavoriteItemAssembly(),
@@ -17,15 +16,16 @@ final class AssemblySetupManager {
         ProfileAssembly(),
         TabBarAssembly()
     ]
+
 }
 
-// MARK: - Public methods
-
+// MARK: - Public Methods
 extension AssemblySetupManager {
-    
+
     func setup() {
-        assemblies.forEach{ assemble in
+        assemblies.forEach { assemble in
             assemble.assemble()
         }
     }
+
 }

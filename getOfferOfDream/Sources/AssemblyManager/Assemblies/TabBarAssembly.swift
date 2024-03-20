@@ -2,9 +2,9 @@ import Foundation
 import GetOfferDI
 
 // MARK: - TabBarAssembly
-
 final class TabBarAssembly: Assembly {
-    
+
+    // MARK: - Public Properties
     func assemble() {
         Container.shared.register(service: TabBarManager.self) { _ in
             TabBarManager()
@@ -14,7 +14,8 @@ final class TabBarAssembly: Assembly {
         }
         @Dependency var view: TabBarViewController
         @Dependency var tabBarManager: TabBarManager
-        
+
         tabBarManager.setup(tabBar: view.tabBar)
     }
+
 }

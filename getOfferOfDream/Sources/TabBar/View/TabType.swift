@@ -1,7 +1,6 @@
 import Foundation
 
 // MARK: - TabType
-
 enum TabType: String {
     case main = "book"
     case favorites = "bookmark"
@@ -11,14 +10,14 @@ enum TabType: String {
 }
 
 // MARK: - Public methods
-
 extension TabType {
-    
+
     func selectedImageName() -> String {
         return self.rawValue + ".fill"
     }
-    
+
     func normalImageName() -> String {
         return self.rawValue
     }
+
 }

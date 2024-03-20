@@ -1,7 +1,6 @@
 import Foundation
 
-// MARK: - Assembly protocol
-
+// MARK: - Assembly Protocol
 public protocol Assembly {
     func assemble()
 }

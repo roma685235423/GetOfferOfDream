@@ -1,13 +1,12 @@
 import UIKit
 
 // MARK: - QuizItemViewController
-
 class QuizItemViewController: UIViewController {
-    
-    // MARK Life cycle
-    
+
+    // MARK: - Overrides Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
     }
+
 }

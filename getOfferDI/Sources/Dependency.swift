@@ -1,17 +1,15 @@
 import Foundation
 
 // MARK: - Dependency @propertyWrapper
-
 @propertyWrapper
 public class Dependency<T> {
-    
-    // MARK: public properties
-    
+
+    // MARK: - Public Properties
     public var wrappedValue: T
-    
-    // MARK: life cycle
-    
+
+    // MARK: - Initializers
     public init() {
         self.wrappedValue = Container.shared.resolve()
     }
+
 }

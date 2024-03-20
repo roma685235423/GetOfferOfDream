@@ -1,11 +1,9 @@
 import UIKit
 
 // MARK: - FavoriteItemViewController
-
 class FavoriteItemViewController: UIViewController {
-    
-    // MARK Life cycle
-    
+
+    // MARK: - Overrides Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemCyan

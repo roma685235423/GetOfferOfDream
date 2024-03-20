@@ -1,13 +1,12 @@
 import UIKit
 
 // MARK: - ProfileItemViewController
-
 class ProfileItemViewController: UIViewController {
-    
-    // MARK Life cycle
-    
+
+    // MARK: - Overrides Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .brown.withAlphaComponent(0.9)
     }
+
 }

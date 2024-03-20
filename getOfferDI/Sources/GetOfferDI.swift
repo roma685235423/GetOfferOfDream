@@ -1,28 +1,20 @@
 import Foundation
 
 // MARK: - Container
-
 public final class Container {
-    
-    // MARK: public properties
-    
+
+    // MARK: - Public Properties
     public static let shared = Container()
-    
-    // MARK: private properties
-    
+
+    // MARK: - Private Properties
     private var services: [String: Any] = [:]
-    
-    // MARK: life cycle
-    
-    public init() {}
-    
-    // MARK: - public methods
-    
+
+    // MARK: - Public Methods
     public func register<Service>(service: Service.Type, resolver: @escaping(Container) -> Service) {
         let key = "\(type(of: Service.self))"
         self.services[key] = resolver(self)
     }
-    
+
     public func resolve<Service>() -> Service {
         let key = "\(type(of: Service.self))"
         guard let service = services[key] as? Service else {
@@ -30,4 +22,5 @@ public final class Container {
         }
         return service
     }
+    
 }
