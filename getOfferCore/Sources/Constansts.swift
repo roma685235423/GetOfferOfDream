@@ -1,0 +1,13 @@
+import Foundation
+
+public class Constansts {
+
+    // MARK: - Global
+    public static let cornerRadius = CGFloat(8.0)
+    public static let buttonHeight = CGFloat(44.0)
+    public static let verticalIndent = CGFloat(8.0)
+    public static let horizontalIndent = CGFloat(16.0)
+    public static let borderWidth = CGFloat(1.6)
+    public static let separatorHeight = CGFloat(0.5)
+
+}
