@@ -13,12 +13,12 @@ else
 fi
 """
 
-let target = Target(
+let target = Target.target(
     name: "getOfferOfDream",
-    platform: .iOS,
+    destinations: .iOS,
     product: .app,
     bundleId: "roman.boiko.getOfferOfDream",
-    deploymentTarget: .iOS(targetVersion: "15.0", devices: .iphone),
+    deploymentTargets: .iOS("15.0"),
     infoPlist: "getOfferOfDream/Info.plist",
     sources: ["getOfferOfDream/Sources/**"],
     resources: ["getOfferOfDream/Resources/**"],

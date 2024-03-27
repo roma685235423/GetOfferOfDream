@@ -11,12 +11,12 @@ extension Project {
             name: name,
             packages: packages,
             targets: [
-                Target(
+                Target.target(
                     name: name,
-                    platform: .iOS,
+                    destinations: .iOS,
                     product: .staticFramework,
                     bundleId: "roman.boiko.\(name)",
-                    deploymentTarget: .iOS(targetVersion: "15.0", devices: .iphone),
+                    deploymentTargets: .iOS("15.0"),
                     infoPlist: .default,
                     sources: ["Sources/**"],
                     dependencies: dependencies

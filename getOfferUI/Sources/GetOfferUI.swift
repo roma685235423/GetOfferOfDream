@@ -1,5 +1,4 @@
 import Foundation
-import GetOfferCore
 
 public final class GetOfferUI {
 

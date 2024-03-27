@@ -10,8 +10,8 @@ public extension UIButton {
         button.setTitle(text, for: .normal)
         button.titleLabel?.font = UIFont.captionRegular
 
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.layer.backgroundColor = UIColor.magentaDynamic.cgColor
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.layer.backgroundColor = UIColor.lightGray.cgColor
 
         button.addTarget(self, action: #selector(changeBackgroundForTouchDown(_:)), for: .touchDown)
         button.addTarget(self, action: #selector(changeBackgroundForTouchUp(_:)), for: .touchUpInside)
@@ -20,12 +20,12 @@ public extension UIButton {
     }
 
     @objc private static func changeBackgroundForTouchDown(_ sender: UIButton) {
-        sender.backgroundColor = UIColor.magentaDynamic.withAlphaComponent(0.3)
-        sender.setTitleColor(UIColor.lightGray.withAlphaComponent(0.6), for: .normal)
+        sender.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
+        sender.setTitleColor(UIColor.black.withAlphaComponent(0.6), for: .normal)
     }
 
     @objc private static func changeBackgroundForTouchUp(_ sender: UIButton) {
-        sender.backgroundColor = UIColor.magentaDynamic
-        sender.setTitleColor(UIColor.white, for: .normal)
+        sender.backgroundColor = UIColor.lightGray
+        sender.setTitleColor(UIColor.black, for: .normal)
     }
 }

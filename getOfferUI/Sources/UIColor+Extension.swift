@@ -44,6 +44,12 @@ public extension UIColor {
         }
     }
 
+    static var whiteDynamic: UIColor {
+        UIColor { traits -> UIColor in
+            return traits.userInterfaceStyle == .dark ? UIColor.black : UIColor.white
+        }
+    }
+
     static var blueDynamic: UIColor {
         UIColor { traits -> UIColor in
             return traits.userInterfaceStyle == .dark ? .darkBlue : .lightBlue
