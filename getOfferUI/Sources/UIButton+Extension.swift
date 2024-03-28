@@ -1,5 +1,4 @@
 import UIKit
-import GetOfferCore
 
 public extension UIButton {
 

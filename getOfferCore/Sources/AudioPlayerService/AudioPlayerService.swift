@@ -57,6 +57,20 @@ public final class AudioPlayerService: NSObject {
     public weak var delegate: AudioPlayerServiceDelegate?
     public static let shared = AudioPlayerService()
 
+    // MARK: - Private Properties
+    private var player: AVAudioPlayer?
+    private var eventQueue: [AudioEventType] = [] {
+        didSet {
+            delegate?.audioPlayerService(didUpdateQueue: eventQueue)
+        }
+    }
+
+    // UserDefaults Keys
+    private let kilometerReachedEnabledKey = "kilometerReachedEnabled"
+    private let percentageReachedEnabledKey = "percentageReachedEnabled"
+    private let paceReachedEnabledKey = "paceReachedEnabled"
+
+    // MARK: - Initializers
     override init() {
         super.init()
         do {
@@ -66,15 +80,11 @@ public final class AudioPlayerService: NSObject {
             print("Error playing audio: \(error.localizedDescription)")
         }
     }
-    // MARK: - Private Properties
-    private var player: AVAudioPlayer?
-    private var eventQueue: [AudioEventType] = [] {
-        didSet {
-            delegate?.audioPlayerService(didUpdateQueue: eventQueue)
-        }
-    }
+}
 
-    // MARK: - Public Methods
+// MARK: - Public Methods
+public extension AudioPlayerService {
+
     /**
      Добавляет аудио событие в очередь воспроизведения и начинает его воспроизведение.
 
@@ -97,7 +107,12 @@ public final class AudioPlayerService: NSObject {
      Этот код добавит событие о достижении дистанции 10 км в
      очередь воспроизведения аудио файлов и начнет его воспроизведение.
      */
-    public func playAudio(for event: AudioEventType) {
+    func playAudio(for event: AudioEventType) {
+        guard audioEventGroupAvaliability(group: event.toGroup()) else {
+            print("Event group is disabled.")
+            return
+        }
+
         let fileName = event.audioFileName
         guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: nil) else {
             print("Audio file \(fileName) not found")
@@ -114,6 +129,43 @@ public final class AudioPlayerService: NSObject {
         guard player == nil || !player!.isPlaying else { return }
         play(fileURL: fileURL)
 
+    }
+
+    func setAudioEventGroupAvaliability(group: AudioEventGroup, state: Bool) {
+        switch group {
+        case .all:
+            UserDefaults.standard.set(state, forKey: kilometerReachedEnabledKey)
+            UserDefaults.standard.set(state, forKey: percentageReachedEnabledKey)
+            UserDefaults.standard.set(state, forKey: paceReachedEnabledKey)
+            if !state { eventQueue.removeAll() }
+        case .kilometerReached:
+            UserDefaults.standard.set(state, forKey: kilometerReachedEnabledKey)
+        case .percentageReached:
+            UserDefaults.standard.set(state, forKey: percentageReachedEnabledKey)
+        case .paceReached:
+            UserDefaults.standard.set(state, forKey: paceReachedEnabledKey)
+        }
+
+        if !state && group != .all {
+            removeEventsFromQueue(group: group)
+        }
+    }
+
+    func audioEventGroupAvaliability(group: AudioEventGroup) -> Bool {
+        var result = false
+        switch group {
+        case .kilometerReached:
+            result = UserDefaults.standard.bool(forKey: kilometerReachedEnabledKey)
+        case .paceReached:
+            result = UserDefaults.standard.bool(forKey: paceReachedEnabledKey)
+        case .percentageReached:
+            result = UserDefaults.standard.bool(forKey: percentageReachedEnabledKey)
+        case .all:
+            result = UserDefaults.standard.bool(forKey: kilometerReachedEnabledKey) &&
+                UserDefaults.standard.bool(forKey: paceReachedEnabledKey) &&
+                UserDefaults.standard.bool(forKey: percentageReachedEnabledKey)
+        }
+        return result
     }
 }
 
@@ -142,5 +194,9 @@ private extension AudioPlayerService {
             print("Error playing audio: \(error.localizedDescription)")
         }
         eventQueue.removeFirst()
+    }
+
+    func removeEventsFromQueue(group: AudioEventGroup) {
+        eventQueue = eventQueue.filter { $0.toGroup() != group }
     }
 }

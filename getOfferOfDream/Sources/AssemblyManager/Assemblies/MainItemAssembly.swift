@@ -25,6 +25,7 @@ final class MainItemAssembly: Assembly {
         @Dependency var view: MainItemViewController
         @Dependency var tableManager: MainTableManager
 
+        presenter.view = view
         tableManager.presenter = presenter
         tableManager.setupTable(tableView: view.tableView)
     }

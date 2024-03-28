@@ -49,10 +49,21 @@ public enum AudioEventType {
         switch self {
         case .kilometerReached:
             return 1
-        case .percentageReached:
-            return 2
         case .paceReached:
+            return 2
+        case .percentageReached:
             return 3
+        }
+    }
+
+    func toGroup() -> AudioEventGroup {
+        switch self {
+        case .kilometerReached:
+            return .kilometerReached
+        case .percentageReached:
+            return .percentageReached
+        case .paceReached:
+            return .paceReached
         }
     }
 }
