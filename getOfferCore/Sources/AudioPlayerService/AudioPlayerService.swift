@@ -18,14 +18,41 @@ import AVFoundation
  Для использования сервиса необходимо создать экземпляр класса `AudioPlayerService`, который является синглтоном.
  Далее, можно вызывать метод `playAudio(for:)`, передавая в него экземпляр типа `AudioEventType`,
  который описывает аудио событие.
-
  # Пример использования
- ```
- let audioService = AudioPlayerService.shared
- audioService.playAudio(for: .kilometerReached(10))
- ```
+
+   ```
+   let audioService = AudioPlayerService.shared
+   audioService.playAudio(for: .kilometerReached(10))
+   ```
  Этот код добавит событие о достижении дистанции 10 км в очередь
  воспроизведения аудио файлов и начнет его воспроизведение.
+
+ # Пример использования в презентере целевого экрана с свитчами управления категориями оповещений.
+ ```
+ func changePaceCategoryAvaliability(to state: Bool) {
+     AudioPlayerService.shared.setAudioEventGroupAvaliability(group: .paceReached, state: state)
+     updateSwitches()
+ }
+
+ func updateSwitches() {
+     let allSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .all)
+     let paceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .paceReached)
+     let timeSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .percentageReached)
+     let distanceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .kilometerReached)
+
+     view?.updateAllSwitch(with: allSwitchState)
+     view?.updatePaceSwitch(with: paceSwitchState)
+     view?.updateTimeSwitch(with: timeSwitchState)
+     view?.updateDistanceSwitch(with: distanceSwitchState)
+ }
+
+ ```
+ # Пример использования метода обновления состояния свитча в раширении контроллера представления
+ ```
+ func updatePaceSwitch(with state: Bool) {
+     paceCategoryAvaliabilitySwitch.setOn(state, animated: true)
+ }
+ ```
 
  # Автоматическое воспроизведение
 
@@ -45,9 +72,9 @@ import AVFoundation
  который вызывается при обновлении очереди воспроизведения.
  ```
  extension YourClass: AudioPlayerServiceDelegate {
- func audioPlayerService(didUpdateQueue eventQueue: [AudioEventType]) {
- // Обработка обновления очереди
- }
+     func audioPlayerService(didUpdateQueue eventQueue: [AudioEventType]) {
+        // Обработка обновления очереди
+     }
  }
  ```
  */
@@ -131,6 +158,25 @@ public extension AudioPlayerService {
 
     }
 
+    /**
+     Устанавливает доступность групп аудио-событий.
+
+     - Parameters:
+     - group: Группа аудио-событий, для которой устанавливается доступность.
+     - state: Новое состояние доступности для указанной группы.
+
+     При установке состояния группы в false, все события, принадлежащие этой группе, удаляются из очереди.
+
+     - Note: Если группа равна `.all` и ее состояние установлено в false, вся очередь событий будет очищена.
+
+     - Important: Этот метод обновляет значения UserDefaults, чтобы сохранить состояние групп аудио-событий.
+
+     # Пример использования
+     ```
+     let audioService = AudioPlayerService.shared
+     audioService.setAudioEventGroupAvaliability(group: .kilometerReached, state: true)
+     ```
+     */
     func setAudioEventGroupAvaliability(group: AudioEventGroup, state: Bool) {
         switch group {
         case .all:
@@ -151,6 +197,21 @@ public extension AudioPlayerService {
         }
     }
 
+    /**
+     Получает состояние доступности указанной группы аудио-событий.
+
+     - Parameter group: Группа аудио-событий, для которой требуется получить состояние доступности.
+
+     - Returns: Булево значение, указывающее состояние доступности указанной группы.
+
+     # Пример использования
+     ```
+     let audioService = AudioPlayerService.shared
+     let isGroupAvailable = audioService.audioEventGroupAvaliability(group: .percentageReached)
+     ```
+     - Note: Если группа `.all`, то возвращается true только в том случае, если все группы включены.
+
+     */
     func audioEventGroupAvaliability(group: AudioEventGroup) -> Bool {
         var result = false
         switch group {

@@ -65,10 +65,6 @@ extension MainItemPresenter: MainItemViewDelegate {
 
 // MARK: - AudioPlayerServiceDelegate
 extension MainItemPresenter: AudioPlayerServiceDelegate {
-    func audioEventGroupFeedback(group: AudioEventGroup, state: Bool) {
-
-    }
-
     func audioPlayerService(didUpdateQueue eventQueue: [AudioEventType]) {
         playerFilesQueue = eventQueue.map {$0.audioFileName}
     }
