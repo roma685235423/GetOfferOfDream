@@ -20,10 +20,10 @@ import AVFoundation
  который описывает аудио событие.
  # Пример использования
 
-   ```
-   let audioService = AudioPlayerService.shared
-   audioService.playAudio(for: .kilometerReached(10))
-   ```
+ ```
+ let audioService = AudioPlayerService.shared
+ audioService.playAudio(for: .kilometerReached(10))
+ ```
  Этот код добавит событие о достижении дистанции 10 км в очередь
  воспроизведения аудио файлов и начнет его воспроизведение.
 
@@ -50,7 +50,7 @@ import AVFoundation
  # Пример использования метода обновления состояния свитча в раширении контроллера представления
  ```
  func updatePaceSwitch(with state: Bool) {
-     paceCategoryAvaliabilitySwitch.setOn(state, animated: true)
+    paceCategoryAvaliabilitySwitch.setOn(state, animated: true)
  }
  ```
 
