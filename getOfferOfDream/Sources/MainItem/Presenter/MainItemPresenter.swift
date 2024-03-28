@@ -27,7 +27,7 @@ extension MainItemPresenter: MainItemViewDelegate {
     }
 
     func playTimeSound() {
-        let paceEventType = AudioEventType.percentageReached((Int.random(in: 25...149)/25)*25)
+        let paceEventType = AudioEventType.percentageReached((Int.random(in: 25...124)/25)*25)
         AudioPlayerService.shared.playAudio(for: paceEventType)
     }
 
