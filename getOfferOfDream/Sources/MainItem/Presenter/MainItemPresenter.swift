@@ -3,6 +3,8 @@ import GetOfferCore
 
 final class MainItemPresenter {
 
+    // MARK: - Public Properties
+    let audioService: AudioPlayerServiceProtocol
     weak var view: MainItemViewInput?
 
     // MARK: - Private Properties
@@ -16,7 +18,8 @@ final class MainItemPresenter {
     // MARK: - Initializers
     init(tableManager: MainTableManagerProtocol) {
         self.tableManager = tableManager
-        AudioPlayerService.shared.delegate = self
+        self.audioService = AudioPlayerService()
+        self.audioService.delegate = self
     }
 }
 
@@ -27,39 +30,39 @@ extension MainItemPresenter: MainItemViewDelegate {
         updateSwitches()
     }
 
-    func changePaceCategoryAvaliability(to state: Bool) {
-        AudioPlayerService.shared.setAudioEventGroupAvailability(group: .paceReached, state: state)
+    func changePaceCategoryAvailability(to state: Bool) {
+        audioService.setAudioEventGroupAvailability(group: .paceReached, state: state)
         updateSwitches()
     }
 
-    func changeTimeCategoryAvaliability(to state: Bool) {
-        AudioPlayerService.shared.setAudioEventGroupAvailability(group: .percentageReached, state: state)
+    func changeTimeCategoryAvailability(to state: Bool) {
+        audioService.setAudioEventGroupAvailability(group: .percentageReached, state: state)
         updateSwitches()
     }
 
-    func changeDistanceCategoryAvaliability(to state: Bool) {
-        AudioPlayerService.shared.setAudioEventGroupAvailability(group: .kilometerReached, state: state)
+    func changeDistanceCategoryAvailability(to state: Bool) {
+        audioService.setAudioEventGroupAvailability(group: .kilometerReached, state: state)
         updateSwitches()
     }
 
-    func changeAllCategoryAvaliability(to state: Bool) {
-        AudioPlayerService.shared.setAudioEventGroupAvailability(group: .all, state: state)
+    func changeAllCategoryAvailability(to state: Bool) {
+        audioService.setAudioEventGroupAvailability(group: .all, state: state)
         updateSwitches()
     }
 
     func playPaceSound() {
         let paceEventType = AudioEventType.paceReached(Int.random(in: 1...15))
-        AudioPlayerService.shared.playAudio(for: paceEventType)
+        audioService.playAudio(for: paceEventType)
     }
 
     func playTimeSound() {
         let paceEventType = AudioEventType.percentageReached((Int.random(in: 25...124)/25)*25)
-        AudioPlayerService.shared.playAudio(for: paceEventType)
+        audioService.playAudio(for: paceEventType)
     }
 
     func playDistanceSound() {
         let paceEventType = AudioEventType.kilometerReached(Int.random(in: 1...13))
-        AudioPlayerService.shared.playAudio(for: paceEventType)
+        audioService.playAudio(for: paceEventType)
     }
 }
 
@@ -83,10 +86,10 @@ extension MainItemPresenter: MainItemPresenterProtocol {
 
 private extension MainItemPresenter {
     func updateSwitches() {
-        let allSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .all)
-        let paceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .paceReached)
-        let timeSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .percentageReached)
-        let distanceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .kilometerReached)
+        let allSwitchState = audioService.audioEventGroupAvailability(group: .all)
+        let paceSwitchState = audioService.audioEventGroupAvailability(group: .paceReached)
+        let timeSwitchState = audioService.audioEventGroupAvailability(group: .percentageReached)
+        let distanceSwitchState = audioService.audioEventGroupAvailability(group: .kilometerReached)
 
         view?.updateAllSwitch(with: allSwitchState)
         view?.updatePaceSwitch(with: paceSwitchState)

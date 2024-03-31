@@ -29,16 +29,16 @@ import AVFoundation
 
  # Пример использования в презентере целевого экрана с свитчами управления категориями оповещений.
  ```
- func changePaceCategoryAvaliability(to state: Bool) {
- AudioPlayerService.shared.setAudioEventGroupAvaliability(group: .paceReached, state: state)
+ func changePaceCategoryAvailability(to state: Bool) {
+ AudioPlayerService.shared.setAudioEventGroupAvailability(group: .paceReached, state: state)
  updateSwitches()
  }
 
  func updateSwitches() {
- let allSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .all)
- let paceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .paceReached)
- let timeSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .percentageReached)
- let distanceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .kilometerReached)
+ let allSwitchState = AudioPlayerService.shared.audioEventGroupAvailability(group: .all)
+ let paceSwitchState = AudioPlayerService.shared.audioEventGroupAvailability(group: .paceReached)
+ let timeSwitchState = AudioPlayerService.shared.audioEventGroupAvailability(group: .percentageReached)
+ let distanceSwitchState = AudioPlayerService.shared.audioEventGroupAvailability(group: .kilometerReached)
 
  view?.updateAllSwitch(with: allSwitchState)
  view?.updatePaceSwitch(with: paceSwitchState)
@@ -50,7 +50,7 @@ import AVFoundation
  # Пример использования метода обновления состояния свитча в раширении контроллера представления
  ```
  func updatePaceSwitch(with state: Bool) {
- paceCategoryAvaliabilitySwitch.setOn(state, animated: true)
+ paceCategoryAvailabilitySwitch.setOn(state, animated: true)
  }
  ```
 
@@ -82,7 +82,6 @@ public final class AudioPlayerService: NSObject {
 
     // MARK: - Public Properties
     public weak var delegate: AudioPlayerServiceDelegate?
-    public static let shared = AudioPlayerService()
 
     // MARK: - Private Properties
     private var player: AVAudioPlayer?
@@ -98,7 +97,7 @@ public final class AudioPlayerService: NSObject {
     private let paceReachedEnabledKey = "paceReachedEnabled"
 
     // MARK: - Initializers
-    override init() {
+    public override init() {
         super.init()
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -110,7 +109,7 @@ public final class AudioPlayerService: NSObject {
 }
 
 // MARK: - Public Methods
-public extension AudioPlayerService {
+extension AudioPlayerService: AudioPlayerServiceProtocol {
 
     /**
      Добавляет аудио событие в очередь воспроизведения и начинает его воспроизведение.
@@ -134,8 +133,8 @@ public extension AudioPlayerService {
      Этот код добавит событие о достижении дистанции 10 км в
      очередь воспроизведения аудио файлов и начнет его воспроизведение.
      */
-    func playAudio(for event: AudioEventType) {
-        guard audioEventGroupAvaliability(group: event.toGroup()) else {
+    public func playAudio(for event: AudioEventType) {
+        guard audioEventGroupAvailability(group: event.toGroup()) else {
             print("Event group is disabled.")
             return
         }
@@ -174,10 +173,10 @@ public extension AudioPlayerService {
      # Пример использования
      ```
      let audioService = AudioPlayerService.shared
-     audioService.setAudioEventGroupAvaliability(group: .kilometerReached, state: true)
+     audioService.setAudioEventGroupAvailability(group: .kilometerReached, state: true)
      ```
      */
-    func setAudioEventGroupAvailability(group: AudioEventGroup, state: Bool) {
+    public func setAudioEventGroupAvailability(group: AudioEventGroup, state: Bool) {
         switch group {
         case .all:
             storage.set(state, forKey: kilometerReachedEnabledKey)
@@ -207,12 +206,12 @@ public extension AudioPlayerService {
      # Пример использования
      ```
      let audioService = AudioPlayerService.shared
-     let isGroupAvailable = audioService.audioEventGroupAvaliability(group: .percentageReached)
+     let isGroupAvailable = audioService.audioEventGroupAvailability(group: .percentageReached)
      ```
      - Note: Если группа `.all`, то возвращается true только в том случае, если все группы включены.
 
      */
-    func audioEventGroupAvaliability(group: AudioEventGroup) -> Bool {
+    public func audioEventGroupAvailability(group: AudioEventGroup) -> Bool {
         var result = false
         switch group {
         case .kilometerReached:

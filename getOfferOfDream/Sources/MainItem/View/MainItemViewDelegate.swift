@@ -5,8 +5,8 @@ protocol MainItemViewDelegate: AnyObject {
     func playPaceSound()
     func playTimeSound()
     func playDistanceSound()
-    func changePaceCategoryAvaliability(to state: Bool)
-    func changeTimeCategoryAvaliability(to state: Bool)
-    func changeDistanceCategoryAvaliability(to state: Bool)
-    func changeAllCategoryAvaliability(to state: Bool)
+    func changePaceCategoryAvailability(to state: Bool)
+    func changeTimeCategoryAvailability(to state: Bool)
+    func changeDistanceCategoryAvailability(to state: Bool)
+    func changeAllCategoryAvailability(to state: Bool)
 }
