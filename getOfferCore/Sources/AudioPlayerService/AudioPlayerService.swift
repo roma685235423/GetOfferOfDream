@@ -14,14 +14,18 @@ import AVFoundation
  - Warning: Переименование звуковых файлов **СТРОГО ЗАПРЕЩЕНО**
 
  # Использование
-
- Для использования сервиса необходимо создать экземпляр класса `AudioPlayerService`, который является синглтоном.
- Далее, можно вызывать метод `playAudio(for:)`, передавая в него экземпляр типа `AudioEventType`,
- который описывает аудио событие.
+ Для использования сервиса необходимо создать экземпляр класса, реализующего протокол `AudioPlayerServiceProtocol`
  # Пример использования
 
  ```
- let audioService = AudioPlayerService.shared
+ // MARK: - Private Properties
+ private let audioService: AudioPlayerServiceProtocol
+ //...
+ // MARK: - Initializers
+ init() {
+ self.audioService = AudioPlayerService()
+ }
+ //...
  audioService.playAudio(for: .kilometerReached(10))
  ```
  Этот код добавит событие о достижении дистанции 10 км в очередь

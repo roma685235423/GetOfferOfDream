@@ -4,11 +4,11 @@ import GetOfferCore
 final class MainItemPresenter {
 
     // MARK: - Public Properties
-    let audioService: AudioPlayerServiceProtocol
     weak var view: MainItemViewInput?
 
     // MARK: - Private Properties
     private let tableManager: MainTableManagerProtocol
+    private let audioService: AudioPlayerServiceProtocol
     private var playerFilesQueue: [String] = [] {
         didSet {
             tableManager.updateTable()
