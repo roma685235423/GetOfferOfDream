@@ -31,11 +31,11 @@ public final class GetOfferOfDreamColors {
 
     #if os(macOS)
     public typealias Color = NSColor
-    #elseif os(iOS) || os(tvOS) || os(watchOS)
+    #elseif os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
     public typealias Color = UIColor
     #endif
 
-    @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, *)
+    @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, visionOS 1.0, *)
     public private(set) lazy var color: Color = {
         guard let color = Color(asset: self) else {
             fatalError("Unable to load color asset named \(name).")
@@ -45,7 +45,7 @@ public final class GetOfferOfDreamColors {
 
     #if canImport(SwiftUI)
     private var _swiftUIColor: Any? = nil
-    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
     public private(set) var swiftUIColor: SwiftUI.Color {
         get {
             if self._swiftUIColor == nil {
@@ -66,10 +66,10 @@ public final class GetOfferOfDreamColors {
 }
 
 public extension GetOfferOfDreamColors.Color {
-    @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, *)
+    @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, visionOS 1.0, *)
     convenience init?(asset: GetOfferOfDreamColors) {
         let bundle = GetOfferOfDreamResources.bundle
-        #if os(iOS) || os(tvOS)
+        #if os(iOS) || os(tvOS) || os(visionOS)
         self.init(named: asset.name, in: bundle, compatibleWith: nil)
         #elseif os(macOS)
         self.init(named: NSColor.Name(asset.name), bundle: bundle)
@@ -80,7 +80,7 @@ public extension GetOfferOfDreamColors.Color {
 }
 
 #if canImport(SwiftUI)
-@available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+@available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
 public extension SwiftUI.Color {
     init(asset: GetOfferOfDreamColors) {
         let bundle = GetOfferOfDreamResources.bundle

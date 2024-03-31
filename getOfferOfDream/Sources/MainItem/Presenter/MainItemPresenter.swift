@@ -28,22 +28,22 @@ extension MainItemPresenter: MainItemViewDelegate {
     }
 
     func changePaceCategoryAvaliability(to state: Bool) {
-        AudioPlayerService.shared.setAudioEventGroupAvaliability(group: .paceReached, state: state)
+        AudioPlayerService.shared.setAudioEventGroupAvailability(group: .paceReached, state: state)
         updateSwitches()
     }
 
     func changeTimeCategoryAvaliability(to state: Bool) {
-        AudioPlayerService.shared.setAudioEventGroupAvaliability(group: .percentageReached, state: state)
+        AudioPlayerService.shared.setAudioEventGroupAvailability(group: .percentageReached, state: state)
         updateSwitches()
     }
 
     func changeDistanceCategoryAvaliability(to state: Bool) {
-        AudioPlayerService.shared.setAudioEventGroupAvaliability(group: .kilometerReached, state: state)
+        AudioPlayerService.shared.setAudioEventGroupAvailability(group: .kilometerReached, state: state)
         updateSwitches()
     }
 
     func changeAllCategoryAvaliability(to state: Bool) {
-        AudioPlayerService.shared.setAudioEventGroupAvaliability(group: .all, state: state)
+        AudioPlayerService.shared.setAudioEventGroupAvailability(group: .all, state: state)
         updateSwitches()
     }
 

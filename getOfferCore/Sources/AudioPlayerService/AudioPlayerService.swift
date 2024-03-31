@@ -30,27 +30,27 @@ import AVFoundation
  # Пример использования в презентере целевого экрана с свитчами управления категориями оповещений.
  ```
  func changePaceCategoryAvaliability(to state: Bool) {
-     AudioPlayerService.shared.setAudioEventGroupAvaliability(group: .paceReached, state: state)
-     updateSwitches()
+ AudioPlayerService.shared.setAudioEventGroupAvaliability(group: .paceReached, state: state)
+ updateSwitches()
  }
 
  func updateSwitches() {
-     let allSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .all)
-     let paceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .paceReached)
-     let timeSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .percentageReached)
-     let distanceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .kilometerReached)
+ let allSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .all)
+ let paceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .paceReached)
+ let timeSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .percentageReached)
+ let distanceSwitchState = AudioPlayerService.shared.audioEventGroupAvaliability(group: .kilometerReached)
 
-     view?.updateAllSwitch(with: allSwitchState)
-     view?.updatePaceSwitch(with: paceSwitchState)
-     view?.updateTimeSwitch(with: timeSwitchState)
-     view?.updateDistanceSwitch(with: distanceSwitchState)
+ view?.updateAllSwitch(with: allSwitchState)
+ view?.updatePaceSwitch(with: paceSwitchState)
+ view?.updateTimeSwitch(with: timeSwitchState)
+ view?.updateDistanceSwitch(with: distanceSwitchState)
  }
 
  ```
  # Пример использования метода обновления состояния свитча в раширении контроллера представления
  ```
  func updatePaceSwitch(with state: Bool) {
-    paceCategoryAvaliabilitySwitch.setOn(state, animated: true)
+ paceCategoryAvaliabilitySwitch.setOn(state, animated: true)
  }
  ```
 
@@ -72,9 +72,9 @@ import AVFoundation
  который вызывается при обновлении очереди воспроизведения.
  ```
  extension YourClass: AudioPlayerServiceDelegate {
-     func audioPlayerService(didUpdateQueue eventQueue: [AudioEventType]) {
-        // Обработка обновления очереди
-     }
+ func audioPlayerService(didUpdateQueue eventQueue: [AudioEventType]) {
+ // Обработка обновления очереди
+ }
  }
  ```
  */
@@ -91,7 +91,7 @@ public final class AudioPlayerService: NSObject {
             delegate?.audioPlayerService(didUpdateQueue: eventQueue)
         }
     }
-
+    private let storage = UserDefaults.standard
     // UserDefaults Keys
     private let kilometerReachedEnabledKey = "kilometerReachedEnabled"
     private let percentageReachedEnabledKey = "percentageReachedEnabled"
@@ -103,7 +103,7 @@ public final class AudioPlayerService: NSObject {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
-        } catch let error {
+        } catch {
             print("Error playing audio: \(error.localizedDescription)")
         }
     }
@@ -177,19 +177,19 @@ public extension AudioPlayerService {
      audioService.setAudioEventGroupAvaliability(group: .kilometerReached, state: true)
      ```
      */
-    func setAudioEventGroupAvaliability(group: AudioEventGroup, state: Bool) {
+    func setAudioEventGroupAvailability(group: AudioEventGroup, state: Bool) {
         switch group {
         case .all:
-            UserDefaults.standard.set(state, forKey: kilometerReachedEnabledKey)
-            UserDefaults.standard.set(state, forKey: percentageReachedEnabledKey)
-            UserDefaults.standard.set(state, forKey: paceReachedEnabledKey)
+            storage.set(state, forKey: kilometerReachedEnabledKey)
+            storage.set(state, forKey: percentageReachedEnabledKey)
+            storage.set(state, forKey: paceReachedEnabledKey)
             if !state { eventQueue.removeAll() }
         case .kilometerReached:
-            UserDefaults.standard.set(state, forKey: kilometerReachedEnabledKey)
+            storage.set(state, forKey: kilometerReachedEnabledKey)
         case .percentageReached:
-            UserDefaults.standard.set(state, forKey: percentageReachedEnabledKey)
+            storage.set(state, forKey: percentageReachedEnabledKey)
         case .paceReached:
-            UserDefaults.standard.set(state, forKey: paceReachedEnabledKey)
+            storage.set(state, forKey: paceReachedEnabledKey)
         }
 
         if !state && group != .all {
@@ -216,15 +216,15 @@ public extension AudioPlayerService {
         var result = false
         switch group {
         case .kilometerReached:
-            result = UserDefaults.standard.bool(forKey: kilometerReachedEnabledKey)
+            result = storage.bool(forKey: kilometerReachedEnabledKey)
         case .paceReached:
-            result = UserDefaults.standard.bool(forKey: paceReachedEnabledKey)
+            result = storage.bool(forKey: paceReachedEnabledKey)
         case .percentageReached:
-            result = UserDefaults.standard.bool(forKey: percentageReachedEnabledKey)
+            result = storage.bool(forKey: percentageReachedEnabledKey)
         case .all:
-            result = UserDefaults.standard.bool(forKey: kilometerReachedEnabledKey) &&
-                UserDefaults.standard.bool(forKey: paceReachedEnabledKey) &&
-                UserDefaults.standard.bool(forKey: percentageReachedEnabledKey)
+            result = storage.bool(forKey: kilometerReachedEnabledKey) &&
+                storage.bool(forKey: paceReachedEnabledKey) &&
+                storage.bool(forKey: percentageReachedEnabledKey)
         }
         return result
     }
