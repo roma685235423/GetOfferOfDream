@@ -22,9 +22,13 @@ import Foundation
  }
  ```
  */
+
 public protocol AudioPlayerServiceProtocol: AnyObject {
     var delegate: AudioPlayerServiceDelegate? { get set }
     func playAudio(for event: AudioEventType)
+}
+
+public protocol AudioPlayerUserDefaultsProtocol: AnyObject {
     func setAudioEventGroupAvailability(group: AudioEventGroup, state: Bool)
     func audioEventGroupAvailability(group: AudioEventGroup) -> Bool
 }

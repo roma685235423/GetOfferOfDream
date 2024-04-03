@@ -14,11 +14,6 @@ class MainItemViewController: UIViewController {
     private let playTimeSoundButton = UIButton.withStandardConfiguration(title: "Время")
     private let playDistanceSoundButton = UIButton.withStandardConfiguration(title: "Дистанция")
 
-    private let paceCategoryAvailabilitySwitch = UISwitch()
-    private let timeCategoryAvailabilitySwitch = UISwitch()
-    private let distanceCategoryAvailabilitySwitch = UISwitch()
-    private let allCategoryAvailabilitySwitch = UISwitch()
-
     // MARK: - Initializers
     init(presenter: MainItemViewDelegate) {
         self.presenter = presenter
@@ -33,48 +28,45 @@ class MainItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .opaqueSeparator
-        view.addSubviews([playPaceSoundButton, playTimeSoundButton, playDistanceSoundButton, tableView,
-                          paceCategoryAvailabilitySwitch, timeCategoryAvailabilitySwitch,
-                          distanceCategoryAvailabilitySwitch, allCategoryAvailabilitySwitch])
+        view.addSubviews([playPaceSoundButton, playTimeSoundButton, playDistanceSoundButton, tableView])
         setConstraints()
-        presenter.viewDidLoad()
         playPaceSoundButton.addTarget(self, action: #selector(playPaceSound), for: .touchUpInside)
         playTimeSoundButton.addTarget(self, action: #selector(playTimeSound), for: .touchUpInside)
         playDistanceSoundButton.addTarget(self, action: #selector(playDistanceSound), for: .touchUpInside)
-        paceCategoryAvailabilitySwitch.addTarget(self,
-                                                 action: #selector(changePaceCategoryAvailability(_:)),
-                                                 for: .valueChanged)
-        timeCategoryAvailabilitySwitch.addTarget(self,
-                                                 action: #selector(changeTimeCategoryAvailability(_:)),
-                                                 for: .valueChanged)
-        distanceCategoryAvailabilitySwitch.addTarget(self,
-                                                     action: #selector(changeDistanceCategoryAvailability(_:)),
-                                                     for: .valueChanged)
-        allCategoryAvailabilitySwitch.addTarget(self,
-                                                action: #selector(changeAllCategoryAvailability(_:)),
-                                                for: .valueChanged)
+        //        paceCategoryAvailabilitySwitch.addTarget(self,
+        //                                                 action: #selector(changePaceCategoryAvailability(_:)),
+        //                                                 for: .valueChanged)
+        //        timeCategoryAvailabilitySwitch.addTarget(self,
+        //                                                 action: #selector(changeTimeCategoryAvailability(_:)),
+        //                                                 for: .valueChanged)
+        //        distanceCategoryAvailabilitySwitch.addTarget(self,
+        //                                                     action: #selector(changeDistanceCategoryAvailability(_:)),
+        //                                                     for: .valueChanged)
+        //        allCategoryAvailabilitySwitch.addTarget(self,
+        //                                                action: #selector(changeAllCategoryAvailability(_:)),
+        //                                                for: .valueChanged)
     }
 
 }
 
 // MARK: - MainItemViewInput
-extension MainItemViewController: MainItemViewInput {
-    func updateAllSwitch(with state: Bool) {
-        allCategoryAvailabilitySwitch.setOn(state, animated: true)
-    }
-
-    func updatePaceSwitch(with state: Bool) {
-        paceCategoryAvailabilitySwitch.setOn(state, animated: true)
-    }
-
-    func updateTimeSwitch(with state: Bool) {
-        timeCategoryAvailabilitySwitch.setOn(state, animated: true)
-    }
-
-    func updateDistanceSwitch(with state: Bool) {
-        distanceCategoryAvailabilitySwitch.setOn(state, animated: true)
-    }
-}
+// extension MainItemViewController: MainItemViewInput {
+//    func updateAllSwitch(with state: Bool) {
+//        allCategoryAvailabilitySwitch.setOn(state, animated: true)
+//    }
+//
+//    func updatePaceSwitch(with state: Bool) {
+//        paceCategoryAvailabilitySwitch.setOn(state, animated: true)
+//    }
+//
+//    func updateTimeSwitch(with state: Bool) {
+//        timeCategoryAvailabilitySwitch.setOn(state, animated: true)
+//    }
+//
+//    func updateDistanceSwitch(with state: Bool) {
+//        distanceCategoryAvailabilitySwitch.setOn(state, animated: true)
+//    }
+// }
 
 // MARK: - Private Methods
 private extension MainItemViewController {
@@ -88,37 +80,19 @@ private extension MainItemViewController {
             playPaceSoundButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             playPaceSoundButton.widthAnchor.constraint(equalToConstant: buttonWidth),
 
-            paceCategoryAvailabilitySwitch.centerXAnchor.constraint(equalTo: playPaceSoundButton.centerXAnchor),
-            paceCategoryAvailabilitySwitch.topAnchor.constraint(equalTo: playPaceSoundButton.bottomAnchor,
-                                                                constant: Constansts.verticalIndent),
-
             playTimeSoundButton.leftAnchor.constraint(equalTo: playPaceSoundButton.rightAnchor,
                                                       constant: Constansts.horizontalIndent),
             playTimeSoundButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             playTimeSoundButton.widthAnchor.constraint(equalToConstant: buttonWidth),
-
-            timeCategoryAvailabilitySwitch.centerXAnchor.constraint(equalTo: playTimeSoundButton.centerXAnchor),
-            timeCategoryAvailabilitySwitch.topAnchor.constraint(equalTo: playTimeSoundButton.bottomAnchor,
-                                                                constant: Constansts.verticalIndent),
 
             playDistanceSoundButton.leftAnchor.constraint(equalTo: playTimeSoundButton.rightAnchor,
                                                           constant: Constansts.horizontalIndent),
             playDistanceSoundButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             playDistanceSoundButton.widthAnchor.constraint(equalToConstant: buttonWidth),
 
-            distanceCategoryAvailabilitySwitch.centerXAnchor.constraint(equalTo: playDistanceSoundButton.centerXAnchor),
-            distanceCategoryAvailabilitySwitch.topAnchor.constraint(equalTo: playDistanceSoundButton.bottomAnchor,
-                                                                    constant: Constansts.verticalIndent),
-
-            allCategoryAvailabilitySwitch.centerXAnchor.constraint(
-                equalTo: timeCategoryAvailabilitySwitch.centerXAnchor
-            ),
-            allCategoryAvailabilitySwitch.topAnchor.constraint(equalTo: timeCategoryAvailabilitySwitch.bottomAnchor,
-                                                               constant: Constansts.verticalIndent),
-
             tableView.leftAnchor.constraint(equalTo: playPaceSoundButton.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: playDistanceSoundButton.rightAnchor),
-            tableView.topAnchor.constraint(equalTo: allCategoryAvailabilitySwitch.bottomAnchor,
+            tableView.topAnchor.constraint(equalTo: playPaceSoundButton.bottomAnchor,
                                            constant: Constansts.verticalIndent),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
@@ -136,19 +110,19 @@ private extension MainItemViewController {
         presenter.playDistanceSound()
     }
 
-    @objc private func changePaceCategoryAvailability(_ sender: UISwitch) {
-        presenter.changePaceCategoryAvailability(to: sender.isOn)
-    }
-
-    @objc private func changeTimeCategoryAvailability(_ sender: UISwitch) {
-        presenter.changeTimeCategoryAvailability(to: sender.isOn)
-    }
-
-    @objc private func changeDistanceCategoryAvailability(_ sender: UISwitch) {
-        presenter.changeDistanceCategoryAvailability(to: sender.isOn)
-    }
-
-    @objc private func changeAllCategoryAvailability(_ sender: UISwitch) {
-        presenter.changeAllCategoryAvailability(to: sender.isOn)
-    }
+    //    @objc private func changePaceCategoryAvailability(_ sender: UISwitch) {
+    //        presenter.changePaceCategoryAvailability(to: sender.isOn)
+    //    }
+    //
+    //    @objc private func changeTimeCategoryAvailability(_ sender: UISwitch) {
+    //        presenter.changeTimeCategoryAvailability(to: sender.isOn)
+    //    }
+    //
+    //    @objc private func changeDistanceCategoryAvailability(_ sender: UISwitch) {
+    //        presenter.changeDistanceCategoryAvailability(to: sender.isOn)
+    //    }
+    //
+    //    @objc private func changeAllCategoryAvailability(_ sender: UISwitch) {
+    //        presenter.changeAllCategoryAvailability(to: sender.isOn)
+    //    }
 }

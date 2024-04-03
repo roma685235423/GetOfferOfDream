@@ -94,14 +94,11 @@ public final class AudioPlayerService: NSObject {
             delegate?.audioPlayerService(didUpdateQueue: eventQueue)
         }
     }
-    private let storage = UserDefaults.standard
-    // UserDefaults Keys
-    private let kilometerReachedEnabledKey = "kilometerReachedEnabled"
-    private let percentageReachedEnabledKey = "percentageReachedEnabled"
-    private let paceReachedEnabledKey = "paceReachedEnabled"
+    private let storage: AudioPlayerUserDefaultsProtocol
 
     // MARK: - Initializers
-    public override init() {
+    public init(storage: AudioPlayerUserDefaultsProtocol) {
+        self.storage = storage
         super.init()
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -138,7 +135,7 @@ extension AudioPlayerService: AudioPlayerServiceProtocol {
      очередь воспроизведения аудио файлов и начнет его воспроизведение.
      */
     public func playAudio(for event: AudioEventType) {
-        guard audioEventGroupAvailability(group: event.toGroup()) else {
+        guard storage.audioEventGroupAvailability(group: event.toGroup()) else {
             print("Event group is disabled.")
             return
         }
@@ -158,78 +155,6 @@ extension AudioPlayerService: AudioPlayerServiceProtocol {
 
         guard player == nil || !player!.isPlaying else { return }
         play(fileURL: fileURL)
-
-    }
-
-    /**
-     Устанавливает доступность групп аудио-событий.
-
-     - Parameters:
-     - group: Группа аудио-событий, для которой устанавливается доступность.
-     - state: Новое состояние доступности для указанной группы.
-
-     При установке состояния группы в false, все события, принадлежащие этой группе, удаляются из очереди.
-
-     - Note: Если группа равна `.all` и ее состояние установлено в false, вся очередь событий будет очищена.
-
-     - Important: Этот метод обновляет значения UserDefaults, чтобы сохранить состояние групп аудио-событий.
-
-     # Пример использования
-     ```
-     let audioService = AudioPlayerService.shared
-     audioService.setAudioEventGroupAvailability(group: .kilometerReached, state: true)
-     ```
-     */
-    public func setAudioEventGroupAvailability(group: AudioEventGroup, state: Bool) {
-        switch group {
-        case .all:
-            storage.set(state, forKey: kilometerReachedEnabledKey)
-            storage.set(state, forKey: percentageReachedEnabledKey)
-            storage.set(state, forKey: paceReachedEnabledKey)
-            if !state { eventQueue.removeAll() }
-        case .kilometerReached:
-            storage.set(state, forKey: kilometerReachedEnabledKey)
-        case .percentageReached:
-            storage.set(state, forKey: percentageReachedEnabledKey)
-        case .paceReached:
-            storage.set(state, forKey: paceReachedEnabledKey)
-        }
-
-        if !state && group != .all {
-            removeEventsFromQueue(group: group)
-        }
-    }
-
-    /**
-     Получает состояние доступности указанной группы аудио-событий.
-
-     - Parameter group: Группа аудио-событий, для которой требуется получить состояние доступности.
-
-     - Returns: Булево значение, указывающее состояние доступности указанной группы.
-
-     # Пример использования
-     ```
-     let audioService = AudioPlayerService.shared
-     let isGroupAvailable = audioService.audioEventGroupAvailability(group: .percentageReached)
-     ```
-     - Note: Если группа `.all`, то возвращается true только в том случае, если все группы включены.
-
-     */
-    public func audioEventGroupAvailability(group: AudioEventGroup) -> Bool {
-        var result = false
-        switch group {
-        case .kilometerReached:
-            result = storage.bool(forKey: kilometerReachedEnabledKey)
-        case .paceReached:
-            result = storage.bool(forKey: paceReachedEnabledKey)
-        case .percentageReached:
-            result = storage.bool(forKey: percentageReachedEnabledKey)
-        case .all:
-            result = storage.bool(forKey: kilometerReachedEnabledKey) &&
-                storage.bool(forKey: paceReachedEnabledKey) &&
-                storage.bool(forKey: percentageReachedEnabledKey)
-        }
-        return result
     }
 }
 
@@ -241,6 +166,19 @@ extension AudioPlayerService: AVAudioPlayerDelegate {
 
         if let fileURL = Bundle.main.url(forResource: nextEvent.audioFileName, withExtension: nil) {
             play(fileURL: fileURL)
+        }
+    }
+}
+
+// MARK: - AudioPlayerServiceQueueControlProtocol
+extension AudioPlayerService: AudioPlayerServiceQueueControlProtocol {
+
+    public func removeEventsFromQueue(group: AudioEventGroup) {
+        switch group {
+        case .all:
+            eventQueue.removeAll()
+        default:
+            eventQueue = eventQueue.filter { $0.toGroup() != group }
         }
     }
 }
@@ -258,9 +196,5 @@ private extension AudioPlayerService {
             print("Error playing audio: \(error.localizedDescription)")
         }
         eventQueue.removeFirst()
-    }
-
-    func removeEventsFromQueue(group: AudioEventGroup) {
-        eventQueue = eventQueue.filter { $0.toGroup() != group }
     }
 }
