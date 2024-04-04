@@ -5,7 +5,7 @@ import AVFoundation
 /**
  Сервис воспроизведения аудио файлов.
 
- Данный сервис предоставляет функционал для воспроизведения аудио файлов в приложении.
+ Этот сервис предоставляет функционал для воспроизведения аудио файлов в приложении.
  Он позволяет добавлять аудио события в очередь воспроизведения с учетом их приоритета и времени добавления.
 
  - Attention: **Важно!** Все звуковые файлы должны находиться в ресурсах приложения
@@ -14,49 +14,7 @@ import AVFoundation
  - Warning: Переименование звуковых файлов **СТРОГО ЗАПРЕЩЕНО**
 
  # Использование
- Для использования сервиса необходимо создать экземпляр класса, реализующего протокол `AudioPlayerServiceProtocol`
- # Пример использования
-
- ```
- // MARK: - Private Properties
- private let audioService: AudioPlayerServiceProtocol
- //...
- // MARK: - Initializers
- init() {
- self.audioService = AudioPlayerService()
- }
- //...
- audioService.playAudio(for: .kilometerReached(10))
- ```
- Этот код добавит событие о достижении дистанции 10 км в очередь
- воспроизведения аудио файлов и начнет его воспроизведение.
-
- # Пример использования в презентере целевого экрана с свитчами управления категориями оповещений.
- ```
- func changePaceCategoryAvailability(to state: Bool) {
- AudioPlayerService.shared.setAudioEventGroupAvailability(group: .paceReached, state: state)
- updateSwitches()
- }
-
- func updateSwitches() {
- let allSwitchState = AudioPlayerService.shared.audioEventGroupAvailability(group: .all)
- let paceSwitchState = AudioPlayerService.shared.audioEventGroupAvailability(group: .paceReached)
- let timeSwitchState = AudioPlayerService.shared.audioEventGroupAvailability(group: .percentageReached)
- let distanceSwitchState = AudioPlayerService.shared.audioEventGroupAvailability(group: .kilometerReached)
-
- view?.updateAllSwitch(with: allSwitchState)
- view?.updatePaceSwitch(with: paceSwitchState)
- view?.updateTimeSwitch(with: timeSwitchState)
- view?.updateDistanceSwitch(with: distanceSwitchState)
- }
-
- ```
- # Пример использования метода обновления состояния свитча в раширении контроллера представления
- ```
- func updatePaceSwitch(with state: Bool) {
- paceCategoryAvailabilitySwitch.setOn(state, animated: true)
- }
- ```
+ Для использования сервиса необходимо создать экземпляр класса, реализующего протокол `AudioPlayerServiceProtocol`.
 
  # Автоматическое воспроизведение
 
@@ -74,10 +32,71 @@ import AVFoundation
  Очередь воспроизведения можно отслеживать при необходимости, реализуя протокол `AudioPlayerServiceDelegate`.
  Этот протокол определяет метод `audioPlayerService(didUpdateQueue:)`,
  который вызывается при обновлении очереди воспроизведения.
+
+ # Пример использования в презентере целевого экрана с свитчами управления категориями оповещений.
  ```
- extension YourClass: AudioPlayerServiceDelegate {
- func audioPlayerService(didUpdateQueue eventQueue: [AudioEventType]) {
- // Обработка обновления очереди
+ final class SettingsPresenter {
+
+ // MARK: - Public Properties
+ weak var view: FavoriteItemViewInput?
+ weak var storage: AudioPlayerUserDefaultsProtocol?
+ }
+
+ // MARK: - FavoriteItemViewDelegate
+ extension TargetPresenter: FavoriteItemViewDelegate {
+
+ func viewDidLoad() {
+ updateSwitches()
+ }
+
+ func changeAvailability(for group: AudioEventGroup, state: Bool) {
+ storage?.setAudioEventGroupAvailability(group: group, state: state)
+ updateSwitches()
+ }
+ }
+
+ // MARK: - Private methods
+ private extension SettingsPresenter {
+ func updateSwitches() {
+ guard
+ let allSwitchState = storage?.audioEventGroupAvailability(group: .all),
+ let paceSwitchState = storage?.audioEventGroupAvailability(group: .paceReached),
+ let timeSwitchState = storage?.audioEventGroupAvailability(group: .percentageReached),
+ let distanceSwitchState = storage?.audioEventGroupAvailability(group: .kilometerReached)
+ else {
+ print("Storage don't exist")
+ return
+ }
+ guard let view = view else {
+ print("View don't exist")
+ return
+ }
+ view.updateSwitch(for: .all, with: allSwitchState)
+ view.updateSwitch(for: .paceReached, with: paceSwitchState)
+ view.updateSwitch(for: .percentageReached, with: timeSwitchState)
+ view.updateSwitch(for: .kilometerReached, with: distanceSwitchState)
+ }
+ }
+ }
+ ```
+
+ # Пример использования метода обновления состояния свитча в расширении контроллера представления
+ ```
+ extension SettingsViewController: SettingsViewProtocol {
+
+ func updateSwitch(for group: AudioEventGroup, with state: Bool) {
+ switch group {
+ case .all:
+ paceCategoryAvailabilitySwitch.setOn(state, animated: true)
+ timeCategoryAvailabilitySwitch.setOn(state, animated: true)
+ distanceCategoryAvailabilitySwitch.setOn(state, animated: true)
+ allCategoryAvailabilitySwitch.setOn(state, animated: true)
+ case .kilometerReached:
+ distanceCategoryAvailabilitySwitch.setOn(state, animated: true)
+ case .paceReached:
+ paceCategoryAvailabilitySwitch.setOn(state, animated: true)
+ case .percentageReached:
+ timeCategoryAvailabilitySwitch.setOn(state, animated: true)
  }
  }
  ```
@@ -124,11 +143,22 @@ extension AudioPlayerService: AudioPlayerServiceProtocol {
      - Parameter event: Аудио событие, которое необходимо добавить в очередь воспроизведения.
      Это экземпляр типа `AudioEventType`, описывающий конкретное аудио событие.
 
-     # Пример использования
+     # Пример использования в презентере целевого экрана
 
      ```
-     let audioService = AudioPlayerService.shared
-     audioService.playAudio(for: .kilometerReached(10))
+     final class TrainingPresenter {
+     private let audioService: AudioPlayerServiceProtocol
+     //...
+     }
+
+     extension MainItemPresenter: TrainingViewDelegate {
+
+     func playPaceSound() {
+     let paceEventType = AudioEventType.paceReached(10)
+     audioService.playAudio(for: paceEventType)
+     }
+     //...
+     }
      ```
 
      Этот код добавит событие о достижении дистанции 10 км в

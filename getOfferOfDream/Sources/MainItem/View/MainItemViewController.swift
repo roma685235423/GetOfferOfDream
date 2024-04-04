@@ -33,40 +33,9 @@ class MainItemViewController: UIViewController {
         playPaceSoundButton.addTarget(self, action: #selector(playPaceSound), for: .touchUpInside)
         playTimeSoundButton.addTarget(self, action: #selector(playTimeSound), for: .touchUpInside)
         playDistanceSoundButton.addTarget(self, action: #selector(playDistanceSound), for: .touchUpInside)
-        //        paceCategoryAvailabilitySwitch.addTarget(self,
-        //                                                 action: #selector(changePaceCategoryAvailability(_:)),
-        //                                                 for: .valueChanged)
-        //        timeCategoryAvailabilitySwitch.addTarget(self,
-        //                                                 action: #selector(changeTimeCategoryAvailability(_:)),
-        //                                                 for: .valueChanged)
-        //        distanceCategoryAvailabilitySwitch.addTarget(self,
-        //                                                     action: #selector(changeDistanceCategoryAvailability(_:)),
-        //                                                     for: .valueChanged)
-        //        allCategoryAvailabilitySwitch.addTarget(self,
-        //                                                action: #selector(changeAllCategoryAvailability(_:)),
-        //                                                for: .valueChanged)
     }
 
 }
-
-// MARK: - MainItemViewInput
-// extension MainItemViewController: MainItemViewInput {
-//    func updateAllSwitch(with state: Bool) {
-//        allCategoryAvailabilitySwitch.setOn(state, animated: true)
-//    }
-//
-//    func updatePaceSwitch(with state: Bool) {
-//        paceCategoryAvailabilitySwitch.setOn(state, animated: true)
-//    }
-//
-//    func updateTimeSwitch(with state: Bool) {
-//        timeCategoryAvailabilitySwitch.setOn(state, animated: true)
-//    }
-//
-//    func updateDistanceSwitch(with state: Bool) {
-//        distanceCategoryAvailabilitySwitch.setOn(state, animated: true)
-//    }
-// }
 
 // MARK: - Private Methods
 private extension MainItemViewController {
@@ -109,20 +78,4 @@ private extension MainItemViewController {
     @objc private func playDistanceSound() {
         presenter.playDistanceSound()
     }
-
-    //    @objc private func changePaceCategoryAvailability(_ sender: UISwitch) {
-    //        presenter.changePaceCategoryAvailability(to: sender.isOn)
-    //    }
-    //
-    //    @objc private func changeTimeCategoryAvailability(_ sender: UISwitch) {
-    //        presenter.changeTimeCategoryAvailability(to: sender.isOn)
-    //    }
-    //
-    //    @objc private func changeDistanceCategoryAvailability(_ sender: UISwitch) {
-    //        presenter.changeDistanceCategoryAvailability(to: sender.isOn)
-    //    }
-    //
-    //    @objc private func changeAllCategoryAvailability(_ sender: UISwitch) {
-    //        presenter.changeAllCategoryAvailability(to: sender.isOn)
-    //    }
 }

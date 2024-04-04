@@ -1,9 +1,6 @@
 import Foundation
 
-public protocol AudioPlayerServiceQueueControlProtocol: AnyObject {
-    func removeEventsFromQueue(group: AudioEventGroup)
-}
-
+// MARK: - AudioPlayerUserDefaultsService
 public final class AudioPlayerUserDefaultsService {
 
     // MARK: - Public Properties
@@ -12,10 +9,13 @@ public final class AudioPlayerUserDefaultsService {
     // MARK: - Private Properties
     private let storage = UserDefaults.standard
 
+    // MARK: - Initializers
     public init() {}
 }
 
+// MARK: - AudioPlayerUserDefaultsProtocol
 extension AudioPlayerUserDefaultsService: AudioPlayerUserDefaultsProtocol {
+
     /**
      Устанавливает доступность групп аудио-событий.
 
@@ -49,7 +49,6 @@ extension AudioPlayerUserDefaultsService: AudioPlayerUserDefaultsProtocol {
         case .paceReached:
             storage.set(state, forKey: AudioEventAvailabilityUserDefaultsKeys.pace.string)
         }
-
         if !state && group != .all {
             audioService?.removeEventsFromQueue(group: group)
         }
@@ -68,7 +67,6 @@ extension AudioPlayerUserDefaultsService: AudioPlayerUserDefaultsProtocol {
      let isGroupAvailable = audioService.audioEventGroupAvailability(group: .percentageReached)
      ```
      - Note: Если группа `.all`, то возвращается true только в том случае, если все группы включены.
-
      */
     public func audioEventGroupAvailability(group: AudioEventGroup) -> Bool {
         var result = false
