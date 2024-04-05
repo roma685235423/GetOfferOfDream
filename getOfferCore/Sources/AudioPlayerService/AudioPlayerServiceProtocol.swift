@@ -11,14 +11,6 @@ import Foundation
  func playAudio(for event: AudioEventType) {
  // Воспроизведение аудио для указанного события
  }
-
- func setAudioEventGroupAvailability(group: AudioEventGroup, state: Bool) {
- // Установка доступности группы аудио событий
- }
-
- func audioEventGroupAvailability(group: AudioEventGroup) -> Bool {
- // Получение информации о доступности группы аудио событий
- }
  }
  ```
  */
@@ -26,9 +18,4 @@ import Foundation
 public protocol AudioPlayerServiceProtocol: AnyObject {
     var delegate: AudioPlayerServiceDelegate? { get set }
     func playAudio(for event: AudioEventType)
-}
-
-public protocol AudioPlayerUserDefaultsProtocol: AnyObject {
-    func setAudioEventGroupAvailability(group: AudioEventGroup, state: Bool)
-    func audioEventGroupAvailability(group: AudioEventGroup) -> Bool
 }

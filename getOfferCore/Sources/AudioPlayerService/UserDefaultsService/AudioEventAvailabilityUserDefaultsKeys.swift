@@ -4,13 +4,8 @@ import Foundation
  Ключи, используемые для хранения доступности аудио-событий в UserDefaults.
 
  Эти ключи используются для сохранения состояния доступности различных групп аудио-событий в UserDefaults.
- Каждый ключ соответствует определенной группе аудио-событий, такой как события достижения километража, процентов или темпа.
-
- # Пример использования:
- ```
- let kilometerKey = AudioEventAvailabilityUserDefaultsKeys.kilometer
- let keyString = kilometerKey.string // "kilometerReachedEnabled"
- ```
+ Каждый ключ соответствует определенной группе аудио-событий, такой как события достижения километража,
+ процентов или темпа.
  */
 enum AudioEventAvailabilityUserDefaultsKeys {
     case kilometer
