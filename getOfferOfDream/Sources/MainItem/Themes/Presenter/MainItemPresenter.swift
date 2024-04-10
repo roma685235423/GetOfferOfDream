@@ -31,10 +31,10 @@ private extension MainItemPresenter {
     func createViewModel(themes: [ThemeModel]) {
         var viewModels = [ThemeViewModel]()
         for theme in themes {
-            
+
             var questions = [QuestionViewModel]()
             for question in theme.questions {
-                
+
                 let questionsModel = QuestionViewModel(
                     title: question.title,
                     text: question.text,
