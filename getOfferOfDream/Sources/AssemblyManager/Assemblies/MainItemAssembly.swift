@@ -1,6 +1,5 @@
 import Foundation
 import GetOfferDI
-import GetOfferCore
 
 // MARK: - MainItemAssembly
 final class MainItemAssembly: Assembly {
@@ -12,20 +11,14 @@ final class MainItemAssembly: Assembly {
             MainTableManager()
         }
 
-        Container.shared.register(service: AudioPlayerUserDefaultsService.self) { _ in
-            AudioPlayerUserDefaultsService()
-        }
-
-        Container.shared.register(service: AudioPlayerService.self) { resolve in
-            let storage: AudioPlayerUserDefaultsService = resolve.resolve()
-            return AudioPlayerService(storage: storage)
+        Container.shared.register(service: ThemesRouter.self) { _ in
+            ThemesRouter()
         }
 
         Container.shared.register(service: MainItemPresenter.self) { resolve in
             let tableManager: MainTableManager = resolve.resolve()
-            let audioService: AudioPlayerService = resolve.resolve()
-            return MainItemPresenter(tableManager: tableManager,
-                                     audioService: audioService)
+            let router: ThemesRouter = resolve.resolve()
+            return MainItemPresenter(tableManager: tableManager, router: router)
         }
 
         Container.shared.register(service: MainItemViewController.self) { resolve in
@@ -36,11 +29,10 @@ final class MainItemAssembly: Assembly {
         @Dependency var presenter: MainItemPresenter
         @Dependency var view: MainItemViewController
         @Dependency var tableManager: MainTableManager
-        @Dependency var service: AudioPlayerService
-        @Dependency var storage: AudioPlayerUserDefaultsService
+        @Dependency var router: ThemesRouter
 
-        storage.audioService = service
-        tableManager.presenter = presenter
+        presenter.view = view
+        router.view = view
         tableManager.setupTable(tableView: view.tableView)
     }
 }

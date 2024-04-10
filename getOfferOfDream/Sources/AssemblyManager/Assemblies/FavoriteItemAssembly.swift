@@ -18,12 +18,8 @@ final class FavoriteItemAssembly: Assembly {
         }
         @Dependency var view: FavoriteItemViewController
         @Dependency var presenter: FavoriteItemPresenter
-        @Dependency var service: AudioPlayerService
-        @Dependency var storage: AudioPlayerUserDefaultsService
 
-        presenter.storage = storage
         presenter.view = view
-        storage.audioService = service
 
         view.viewDidLoad()
     }
