@@ -5,10 +5,10 @@ import GetOfferDI
 final class QuestionsAssembly: Assembly {
 
     // MARK: - Public Properties
-    var questions: [QuestionViewModel]
+    var questions: [QuestionModel]
 
     // MARK: - Initializers
-    init(questions: [QuestionViewModel]) {
+    init(questions: [QuestionModel]) {
         self.questions = questions
     }
 
@@ -34,6 +34,6 @@ final class QuestionsAssembly: Assembly {
         @Dependency var tableManager: QuestionsTableManager
 
         presenter.view = view
-        tableManager.update(tableView: view.tableView)
+        tableManager.setupTable(tableView: view.tableView)
     }
 }

@@ -10,7 +10,7 @@ final class MainTableManager: NSObject {
     private var viewModel: [ThemeViewModel] = []
 }
 
-// MARK: - Public Methods
+// MARK: - MainTableDelegate
 extension MainTableManager: MainTableDelegate {
 
     func update(viewModel: [ThemeViewModel]) {
@@ -18,12 +18,20 @@ extension MainTableManager: MainTableDelegate {
         self.tableView?.reloadData()
     }
 
-    func setupTable(tableView: UITableView) {
+    func setup(tableView: UITableView) {
         self.tableView = tableView
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
         self.tableView?.separatorStyle = .singleLine
         self.tableView?.backgroundColor = UIColor.opaqueSeparator
+    }
+}
+
+// MARK: - MainTableManagerProtocol
+extension MainTableManager: MainTableManagerProtocol {
+
+    func updateTable() {
+        tableView?.reloadData()
     }
 }
 
@@ -48,17 +56,10 @@ extension MainTableManager: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension MainTableManager: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = viewModel[indexPath.row]
 
         viewModel.didTap(viewModel.questions)
-    }
-}
-
-// MARK: - MainTableManagerProtocol
-extension MainTableManager: MainTableManagerProtocol {
-
-    func updateTable() {
-        tableView?.reloadData()
     }
 }

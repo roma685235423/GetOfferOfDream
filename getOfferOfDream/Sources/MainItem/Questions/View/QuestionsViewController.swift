@@ -8,7 +8,7 @@ class QuestionsViewController: UIViewController {
     let tableView = UITableView(frame: .zero, style: .plain)
 
     // MARK: - Private Properties
-    private let presenter: QuestionsPresenterProtocol
+    private let presenter: QuestionsPresenterProtocol?
 
     // MARK: - Initializers
     init(presenter: QuestionsPresenterProtocol) {
@@ -24,7 +24,7 @@ class QuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .opaqueSeparator
-        presenter.viewDidLoad()
+        presenter?.viewDidLoad()
         view.addSubviews([tableView])
         setConstraints()
     }

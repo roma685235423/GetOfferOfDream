@@ -32,10 +32,10 @@ private extension MainItemPresenter {
         var viewModels = [ThemeViewModel]()
         for theme in themes {
 
-            var questions = [QuestionViewModel]()
+            var questions = [QuestionModel]()
             for question in theme.questions {
 
-                let questionsModel = QuestionViewModel(
+                let questionsModel = QuestionModel(
                     title: question.title,
                     text: question.text,
                     images: question.images
