@@ -37,7 +37,9 @@ private extension QuestionsPresenter {
                 title: question.title,
                 text: question.text,
                 images: question.images
-            ) { _ in}
+            ) { _ in
+                print(#function)
+            }
 
             viewModel.append(questionViewModel)
         }
