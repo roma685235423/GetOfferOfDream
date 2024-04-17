@@ -10,11 +10,22 @@ final class MainItemPresenter {
     private let tableManager: MainTableDelegate
     private let themes = DataServiceManager.shared.themes
     private let router: ThemesRouterProtocol
+    private var viewModels: [ThemeViewModel] = []
 
     // MARK: - Initializers
     init(tableManager: MainTableDelegate, router: ThemesRouterProtocol) {
         self.tableManager = tableManager
         self.router = router
+    }
+}
+
+extension MainItemPresenter: MainItemPresenterDelegate {
+    func getViewModelsCount() -> Int {
+        return viewModels.count
+    }
+
+    func getViewModelWith(indexPath: IndexPath) -> ThemeViewModel? {
+        return viewModels[indexPath.row]
     }
 }
 
@@ -29,7 +40,6 @@ extension MainItemPresenter: MainItemPresenterProtocol {
 private extension MainItemPresenter {
 
     func createViewModel(themes: [ThemeModel]) {
-        var viewModels = [ThemeViewModel]()
         for theme in themes {
 
             var questions = [QuestionModel]()
@@ -53,7 +63,7 @@ private extension MainItemPresenter {
         }
 
         DispatchQueue.main.async { [weak self] in
-            self?.tableManager.update(viewModel: viewModels)
+            self?.tableManager.update()
         }
     }
 }

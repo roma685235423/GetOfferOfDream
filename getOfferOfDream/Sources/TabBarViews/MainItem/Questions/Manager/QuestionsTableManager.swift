@@ -36,8 +36,7 @@ extension QuestionsTableManager: QuestionsManagerProtocol {
 extension QuestionsTableManager: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let presenter = presenter else { return 0 }
-        return presenter.getViewModelsCount()
+        presenter?.getViewModelsCount() ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

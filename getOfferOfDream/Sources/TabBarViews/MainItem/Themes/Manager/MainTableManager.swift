@@ -5,16 +5,13 @@ final class MainTableManager: NSObject {
 
     // MARK: - Public Properties
     weak var tableView: UITableView?
-
-    // MARK: - Private Properties
-    private var viewModel: [ThemeViewModel] = []
+    weak var presenter: MainItemPresenterDelegate?
 }
 
 // MARK: - MainTableDelegate
 extension MainTableManager: MainTableDelegate {
 
-    func update(viewModel: [ThemeViewModel]) {
-        self.viewModel = viewModel
+    func update() {
         self.tableView?.reloadData()
     }
 
@@ -39,11 +36,15 @@ extension MainTableManager: MainTableManagerProtocol {
 extension MainTableManager: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.count
+        presenter?.getViewModelsCount() ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let themeTitle = viewModel[indexPath.row]
+        guard
+            let presenter = presenter,
+            let themeTitle = presenter.getViewModelWith(indexPath: indexPath)
+        else { return UITableViewCell() }
+
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
 
         let title = themeTitle.title
@@ -58,7 +59,7 @@ extension MainTableManager: UITableViewDataSource {
 extension MainTableManager: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewModel = viewModel[indexPath.row]
+        guard let viewModel = presenter?.getViewModelWith(indexPath: indexPath) else { return }
 
         viewModel.didTap(viewModel.questions)
     }

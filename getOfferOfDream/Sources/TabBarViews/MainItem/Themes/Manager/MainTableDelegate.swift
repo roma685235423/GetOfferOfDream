@@ -1,6 +1,6 @@
 import UIKit
 
 protocol MainTableDelegate: AnyObject {
-    func update(viewModel: [ThemeViewModel])
+    func update()
     func setup(tableView: UITableView)
 }

@@ -33,6 +33,7 @@ final class MainItemAssembly: Assembly {
 
         presenter.view = view
         router.view = view
+        tableManager.presenter = presenter
         tableManager.setup(tableView: view.tableView)
     }
 }

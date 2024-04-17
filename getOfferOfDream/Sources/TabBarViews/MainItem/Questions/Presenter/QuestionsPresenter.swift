@@ -9,7 +9,7 @@ final class QuestionsPresenter {
     // MARK: - Private Properties
     private let tableManager: QuestionTableManagerDelegate
     private var questions: [QuestionModel]
-    private var viewModel: [QuestionViewModel] = []
+    private var viewModels: [QuestionViewModel] = []
 
     // MARK: - Initializers
     init(tableManager: QuestionTableManagerDelegate, questions: [QuestionModel]) {
@@ -25,11 +25,11 @@ extension QuestionsPresenter: QuestionsViewDelegate { }
 extension QuestionsPresenter: QuestionPresenterDelegate {
 
     func getViewModelsCount() -> Int {
-        return viewModel.count
+        return viewModels.count
     }
 
     func getViewModelWith(indexPath: IndexPath) -> QuestionViewModel? {
-        return viewModel[indexPath.row]
+        return viewModels[indexPath.row]
     }
 }
 
@@ -52,7 +52,7 @@ private extension QuestionsPresenter {
             ) { _ in
                 print(#function)
             }
-            self.viewModel.append(questionViewModel)
+            self.viewModels.append(questionViewModel)
         }
 
         DispatchQueue.main.async { [weak self] in
