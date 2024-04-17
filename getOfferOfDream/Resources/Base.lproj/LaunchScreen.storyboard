@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,15 +14,100 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSO-dO-kz3" userLabel="GreenView">
+                                <rect key="frame" x="-102" y="120" width="596" height="612"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            </view>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqE-CX-QpC" userLabel="BlueView">
+                                <rect key="frame" x="0.0" y="520" width="323" height="332"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            </view>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8w0-rF-aI5" userLabel="RedView">
+                                <rect key="frame" x="0.0" y="0.0" width="323" height="332"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                            </view>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fE8-Wt-a6r" userLabel="PurpleView">
+                                <rect key="frame" x="112" y="282" width="281" height="218"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LanchScreen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="av8-vc-1ts" userLabel="Launch Screen 3">
+                                <rect key="frame" x="97" y="430" width="269.33333333333331" height="62.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="76" id="Qqm-Pg-u4Q"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="ejM-sv-Ed3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="47"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.2467580782312925" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LanchScreen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBm-6A-DHg" userLabel="Launch Screen 2">
+                                <rect key="frame" x="62" y="395" width="269.33333333333331" height="62.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="76" id="3PM-6C-yv2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="s6X-eC-1VI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="47"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.49593431122448978" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LanchScreen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JI9-wq-UUs" userLabel="Launch Screen 1">
+                                <rect key="frame" x="27" y="360.33333333333331" width="269.33333333333331" height="61.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="IIs-uE-zgg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="76" id="ykY-XZ-7eO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="47"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RBm-6A-DHg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1d2-r5-njO"/>
+                            <constraint firstAttribute="bottom" secondItem="8w0-rF-aI5" secondAttribute="bottom" constant="520" id="49u-il-hHC"/>
+                            <constraint firstItem="RBm-6A-DHg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4Ba-L9-Tgc"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="AqE-CX-QpC" secondAttribute="bottom" constant="-34" id="73u-Um-RR5"/>
+                            <constraint firstItem="av8-vc-1ts" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="35" id="AHd-wh-7Je"/>
+                            <constraint firstItem="8w0-rF-aI5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L3W-pe-0tL"/>
+                            <constraint firstItem="fE8-Wt-a6r" firstAttribute="centerY" secondItem="JI9-wq-UUs" secondAttribute="centerY" id="LO9-VY-McE"/>
+                            <constraint firstItem="fE8-Wt-a6r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="223" id="OyZ-Es-Pvz"/>
+                            <constraint firstItem="fE8-Wt-a6r" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QW4-kq-Jhf"/>
+                            <constraint firstItem="8w0-rF-aI5" firstAttribute="leading" secondItem="AqE-CX-QpC" secondAttribute="leading" id="fK3-pK-TYS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8w0-rF-aI5" secondAttribute="trailing" constant="70" id="gBN-KU-9gr"/>
+                            <constraint firstItem="fE8-Wt-a6r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="112" id="iCg-of-xrX"/>
+                            <constraint firstItem="JI9-wq-UUs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-35" id="j0C-sc-Pcd"/>
+                            <constraint firstItem="av8-vc-1ts" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="35" id="lmC-LK-NxG"/>
+                            <constraint firstItem="8w0-rF-aI5" firstAttribute="trailing" secondItem="AqE-CX-QpC" secondAttribute="trailing" id="syO-8N-ZlL"/>
+                            <constraint firstItem="8w0-rF-aI5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-59" id="u0z-dm-FKB"/>
+                            <constraint firstItem="AqE-CX-QpC" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="520" id="wQr-Xe-tVV"/>
+                            <constraint firstItem="JI9-wq-UUs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-35" id="zuL-5z-3ev"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
