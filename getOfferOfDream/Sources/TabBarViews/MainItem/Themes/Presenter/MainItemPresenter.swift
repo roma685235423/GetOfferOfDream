@@ -47,8 +47,7 @@ private extension MainItemPresenter {
 
                 let questionsModel = QuestionModel(
                     title: question.title,
-                    text: question.text,
-                    images: question.images
+                    sections: question.sections
                 )
                 questions.append(questionsModel)
             }

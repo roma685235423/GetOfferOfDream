@@ -47,8 +47,7 @@ private extension QuestionsPresenter {
         for question in questions {
             let questionViewModel = QuestionViewModel(
                 title: question.title,
-                text: question.text,
-                images: question.images
+                sections: question.sections
             ) { _ in
                 print(#function)
             }
