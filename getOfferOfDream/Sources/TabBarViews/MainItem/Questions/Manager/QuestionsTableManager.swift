@@ -5,15 +5,13 @@ final class QuestionsTableManager: NSObject {
 
     // MARK: - Public Properties
     weak var tableView: UITableView?
-
-    // MARK: - Private Properties
-    private var viewModel: [QuestionViewModel] = []
+    weak var presenter: QuestionPresenterDelegate?
 }
 
 // MARK: - MainTableDelegate
 extension QuestionsTableManager: QuestionTableManagerDelegate {
-    func update(viewModel: [QuestionViewModel]) {
-        self.viewModel = viewModel
+
+    func update() {
         self.tableView?.reloadData()
     }
 
@@ -38,11 +36,16 @@ extension QuestionsTableManager: QuestionsManagerProtocol {
 extension QuestionsTableManager: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.count
+        guard let presenter = presenter else { return 0 }
+        return presenter.getViewModelsCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let questionTitle = viewModel[indexPath.row]
+        guard
+            let presenter = presenter,
+            let questionTitle = presenter.getViewModelWith(indexPath: indexPath)
+        else { return UITableViewCell() }
+
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
 
         let title = questionTitle.title
@@ -57,8 +60,7 @@ extension QuestionsTableManager: UITableViewDataSource {
 extension QuestionsTableManager: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewModel = viewModel[indexPath.row]
-
-        print("Did tap -> \(viewModel)\n")
+        let tappedCellModel = presenter?.getViewModelWith(indexPath: indexPath)
+        print("Did tap -> \(tappedCellModel?.title ?? "nil")\n")
     }
 }

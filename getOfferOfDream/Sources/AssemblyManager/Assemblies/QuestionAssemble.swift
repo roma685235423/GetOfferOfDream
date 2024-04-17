@@ -34,6 +34,7 @@ final class QuestionsAssembly: Assembly {
         @Dependency var tableManager: QuestionsTableManager
 
         presenter.view = view
+        tableManager.presenter = presenter
         tableManager.setupTable(tableView: view.tableView)
     }
 }
