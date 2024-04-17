@@ -25,7 +25,7 @@ extension MainTableManager: TableManagerDelegate {
 }
 
 // MARK: - MainTableManagerProtocol
-extension MainTableManager: MainTableManagerProtocol {
+extension MainTableManager: TableManagerProtocol {
 
     func updateTable() {
         tableView?.reloadData()

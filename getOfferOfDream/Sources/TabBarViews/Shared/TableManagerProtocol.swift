@@ -1,5 +1,5 @@
 import UIKit
 
-protocol QuestionsManagerProtocol {
+protocol TableManagerProtocol {
     func updateTable()
 }

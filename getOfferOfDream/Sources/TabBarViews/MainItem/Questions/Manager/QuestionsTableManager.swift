@@ -25,7 +25,7 @@ extension QuestionsTableManager: TableManagerDelegate {
 }
 
 // MARK: - Public Methods
-extension QuestionsTableManager: QuestionsManagerProtocol {
+extension QuestionsTableManager: TableManagerProtocol {
 
     func updateTable() {
         tableView?.reloadData()
