@@ -35,6 +35,6 @@ final class QuestionsAssembly: Assembly {
 
         presenter.view = view
         tableManager.presenter = presenter
-        tableManager.setupTable(tableView: view.tableView)
+        tableManager.setup(tableView: view.tableView)
     }
 }

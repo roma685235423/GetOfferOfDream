@@ -9,7 +9,7 @@ final class MainTableManager: NSObject {
 }
 
 // MARK: - MainTableDelegate
-extension MainTableManager: MainTableDelegate {
+extension MainTableManager: TableManagerDelegate {
 
     func update() {
         self.tableView?.reloadData()

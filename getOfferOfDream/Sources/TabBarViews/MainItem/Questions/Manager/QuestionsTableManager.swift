@@ -9,13 +9,13 @@ final class QuestionsTableManager: NSObject {
 }
 
 // MARK: - MainTableDelegate
-extension QuestionsTableManager: QuestionTableManagerDelegate {
+extension QuestionsTableManager: TableManagerDelegate {
 
     func update() {
         self.tableView?.reloadData()
     }
 
-    func setupTable(tableView: UITableView) {
+    func setup(tableView: UITableView) {
         self.tableView = tableView
         self.tableView?.delegate = self
         self.tableView?.dataSource = self

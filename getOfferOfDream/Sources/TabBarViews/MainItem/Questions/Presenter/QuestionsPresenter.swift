@@ -7,12 +7,12 @@ final class QuestionsPresenter {
     weak var view: QuestionsViewDelegate?
 
     // MARK: - Private Properties
-    private let tableManager: QuestionTableManagerDelegate
+    private let tableManager: TableManagerDelegate
     private var questions: [QuestionModel]
     private var viewModels: [QuestionViewModel] = []
 
     // MARK: - Initializers
-    init(tableManager: QuestionTableManagerDelegate, questions: [QuestionModel]) {
+    init(tableManager: TableManagerDelegate, questions: [QuestionModel]) {
         self.tableManager = tableManager
         self.questions = questions
     }

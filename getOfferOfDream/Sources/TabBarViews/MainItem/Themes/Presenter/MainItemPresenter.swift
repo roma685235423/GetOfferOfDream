@@ -7,13 +7,13 @@ final class MainItemPresenter {
     weak var view: MainItemViewInput?
 
     // MARK: - Private Properties
-    private let tableManager: MainTableDelegate
+    private let tableManager: TableManagerDelegate
     private let themes = DataServiceManager.shared.themes
     private let router: ThemesRouterProtocol
     private var viewModels: [ThemeViewModel] = []
 
     // MARK: - Initializers
-    init(tableManager: MainTableDelegate, router: ThemesRouterProtocol) {
+    init(tableManager: TableManagerDelegate, router: ThemesRouterProtocol) {
         self.tableManager = tableManager
         self.router = router
     }
