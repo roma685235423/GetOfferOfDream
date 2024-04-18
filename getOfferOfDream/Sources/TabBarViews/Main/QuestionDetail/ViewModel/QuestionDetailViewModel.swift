@@ -1,6 +1,6 @@
-import Foundation
+import UIKit
 
-struct QuestionModel {
+struct QuestionDetailViewModel: ViewModel {
     let title: String
     let sections: [QuestionDetailSectionModel]
 }
