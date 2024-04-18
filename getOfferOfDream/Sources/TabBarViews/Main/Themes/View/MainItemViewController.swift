@@ -28,16 +28,15 @@ final class MainItemViewController: UIViewController {
         view.addSubviews([tableView])
         setConstraints()
     }
-
 }
 
+// MARK: - BaseViewControllerProtocol
 extension MainItemViewController: BaseViewControllerProtocol { }
 
 // MARK: - Private Methods
 private extension MainItemViewController {
 
     func setConstraints() {
-
         NSLayoutConstraint.activate([
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Constansts.horizontalIndent),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Constansts.horizontalIndent),

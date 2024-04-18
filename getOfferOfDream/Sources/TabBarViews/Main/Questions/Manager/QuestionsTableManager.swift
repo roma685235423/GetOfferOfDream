@@ -5,7 +5,7 @@ final class QuestionsTableManager: NSObject {
 
     // MARK: - Public Properties
     weak var tableView: UITableView?
-    weak var presenter: QuestionPresenterDelegate?
+    weak var presenter: BaseTablePresenterDelegate?
 }
 
 // MARK: - MainTableDelegate
@@ -34,7 +34,7 @@ extension QuestionsTableManager: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let presenter = presenter,
-            let questionTitle = presenter.getViewModelWith(indexPath: indexPath)
+            let questionTitle: QuestionViewModel = presenter.getViewModelWith(indexPath: indexPath)
         else { return UITableViewCell() }
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
@@ -51,7 +51,11 @@ extension QuestionsTableManager: UITableViewDataSource {
 extension QuestionsTableManager: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tappedCellModel = presenter?.getViewModelWith(indexPath: indexPath)
-        print("Did tap -> \(tappedCellModel?.title ?? "nil")\n")
+        guard
+            let presenter = presenter,
+            let tappedCellModel: QuestionViewModel = presenter.getViewModelWith(indexPath: indexPath)
+        else { return }
+
+        print("Did tap -> \(tappedCellModel.title)\n")
     }
 }

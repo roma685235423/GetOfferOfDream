@@ -22,14 +22,15 @@ final class QuestionsPresenter {
 extension QuestionsPresenter: BaseViewControllerProtocol { }
 
 // MARK: - QuestionPresenterDelegate
-extension QuestionsPresenter: QuestionPresenterDelegate {
+extension QuestionsPresenter: BaseTablePresenterDelegate {
 
     func getViewModelsCount() -> Int {
         return viewModels.count
     }
 
-    func getViewModelWith(indexPath: IndexPath) -> QuestionViewModel? {
-        return viewModels[indexPath.row]
+    func getViewModelWith<T: ViewModel>(indexPath: IndexPath) -> T? {
+        let targetViewModel: QuestionViewModel = viewModels[indexPath.row]
+        return targetViewModel as? T
     }
 }
 

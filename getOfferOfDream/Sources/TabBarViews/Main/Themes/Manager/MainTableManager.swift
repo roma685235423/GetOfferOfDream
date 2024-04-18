@@ -5,7 +5,7 @@ final class MainTableManager: NSObject {
 
     // MARK: - Public Properties
     weak var tableView: UITableView?
-    weak var presenter: MainItemPresenterDelegate?
+    weak var presenter: BaseTablePresenterDelegate?
 }
 
 // MARK: - MainTableDelegate
@@ -34,7 +34,7 @@ extension MainTableManager: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let presenter = presenter,
-            let themeTitle = presenter.getViewModelWith(indexPath: indexPath)
+            let themeTitle: ThemeViewModel = presenter.getViewModelWith(indexPath: indexPath)
         else { return UITableViewCell() }
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
@@ -51,7 +51,7 @@ extension MainTableManager: UITableViewDataSource {
 extension MainTableManager: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let viewModel = presenter?.getViewModelWith(indexPath: indexPath) else { return }
+        guard let viewModel: ThemeViewModel = presenter?.getViewModelWith(indexPath: indexPath) else { return }
 
         viewModel.didTap(viewModel.questions)
     }

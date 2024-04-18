@@ -4,7 +4,7 @@ final class QuestionDetailTableManager: NSObject {
 
     // MARK: - Public Properties
     weak var tableView: UITableView?
-    weak var presenter: QuestionDetailPresenterDelegate?
+    weak var presenter: BaseTablePresenterDelegate?
 }
 
 // MARK: - MainTableDelegate
@@ -24,14 +24,15 @@ extension QuestionDetailTableManager: BaseTableManagerDelegate {
 
 // MARK: - UITableViewDataSource
 extension QuestionDetailTableManager: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter?.getDetailsCount() ?? 0
+        presenter?.getViewModelsCount() ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let presenter = presenter,
-            let questionTitle = presenter.getViewModelWith(indexPath: indexPath)
+            let questionTitle: QuestionViewModel = presenter.getViewModelWith(indexPath: indexPath)
         else { return UITableViewCell() }
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)

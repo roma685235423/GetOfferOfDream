@@ -19,13 +19,15 @@ final class MainItemPresenter {
     }
 }
 
-extension MainItemPresenter: MainItemPresenterDelegate {
+// MARK: - BaseTablePresenterDelegate
+extension MainItemPresenter: BaseTablePresenterDelegate {
     func getViewModelsCount() -> Int {
-        return viewModels.count
+        viewModels.count
     }
 
-    func getViewModelWith(indexPath: IndexPath) -> ThemeViewModel? {
-        return viewModels[indexPath.row]
+    func getViewModelWith<T: ViewModel>(indexPath: IndexPath) -> T? {
+        let targetViewModel: ThemeViewModel = viewModels[indexPath.row]
+        return targetViewModel as? T
     }
 }
 
