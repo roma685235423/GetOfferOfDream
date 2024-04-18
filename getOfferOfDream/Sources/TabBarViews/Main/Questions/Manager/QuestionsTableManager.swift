@@ -28,7 +28,7 @@ extension QuestionsTableManager: BaseTableManagerDelegate {
 extension QuestionsTableManager: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter?.getViewModelsCount() ?? 0
+        return presenter?.getViewModelsCount() ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,7 +38,6 @@ extension QuestionsTableManager: UITableViewDataSource {
         else { return UITableViewCell() }
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-
         let title = questionTitle.title
         cell.textLabel?.text = title
         cell.textLabel?.textColor = .black

@@ -1,5 +1,4 @@
 import Foundation
-import GetOfferCore
 
 final class QuestionsPresenter {
 
@@ -18,10 +17,10 @@ final class QuestionsPresenter {
     }
 }
 
-// MARK: - QuestionsViewDelegate
+// MARK: - BaseViewControllerProtocol
 extension QuestionsPresenter: BaseViewControllerProtocol { }
 
-// MARK: - QuestionPresenterDelegate
+// MARK: - BaseTablePresenterDelegate
 extension QuestionsPresenter: BaseTablePresenterDelegate {
 
     func getViewModelsCount() -> Int {
@@ -34,7 +33,7 @@ extension QuestionsPresenter: BaseTablePresenterDelegate {
     }
 }
 
-// MARK: - QuestionsPresenterProtocol
+// MARK: - BasePresenterDelegate
 extension QuestionsPresenter: BasePresenterDelegate {
     func viewDidLoad() {
         createViewModel(questions: questions)

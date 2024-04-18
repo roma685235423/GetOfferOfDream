@@ -1,7 +1,6 @@
 import UIKit
 import GetOfferUI
 
-// MARK: - QuestionsViewController
 final class QuestionsViewController: UIViewController {
 
     // MARK: - Public Properties
@@ -28,10 +27,9 @@ final class QuestionsViewController: UIViewController {
         view.addSubviews([tableView])
         setConstraints()
     }
-
 }
 
-// MARK: - QuestionsViewDelegate
+// MARK: - BaseViewControllerProtocol
 extension QuestionsViewController: BaseViewControllerProtocol { }
 
 // MARK: - Private Methods

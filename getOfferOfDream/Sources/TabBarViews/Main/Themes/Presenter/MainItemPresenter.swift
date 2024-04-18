@@ -21,6 +21,7 @@ final class MainItemPresenter {
 
 // MARK: - BaseTablePresenterDelegate
 extension MainItemPresenter: BaseTablePresenterDelegate {
+    
     func getViewModelsCount() -> Int {
         viewModels.count
     }
@@ -33,6 +34,7 @@ extension MainItemPresenter: BaseTablePresenterDelegate {
 
 // MARK: - MainItemPresenterProtocol
 extension MainItemPresenter: BasePresenterDelegate {
+    
     func viewDidLoad() {
         createViewModel(themes: themes)
     }

@@ -1,6 +1,6 @@
 import Foundation
 
-struct QuestionDetailSectionModel {
+struct QuestionDetailSectionModel: ViewModel {
     let text: String
     let imageURLString: String?
 }
