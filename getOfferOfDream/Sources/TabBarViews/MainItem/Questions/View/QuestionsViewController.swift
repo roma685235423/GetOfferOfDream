@@ -2,7 +2,7 @@ import UIKit
 import GetOfferUI
 
 // MARK: - QuestionsViewController
-class QuestionsViewController: UIViewController {
+final class QuestionsViewController: UIViewController {
 
     // MARK: - Public Properties
     let tableView = UITableView(frame: .zero, style: .plain)

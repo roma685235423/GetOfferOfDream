@@ -24,14 +24,6 @@ extension QuestionsTableManager: TableManagerDelegate {
     }
 }
 
-// MARK: - TableManagerProtocol
-// extension QuestionsTableManager: TableManagerProtocol {
-//
-//    func updateTable() {
-//        tableView?.reloadData()
-//    }
-// }
-
 // MARK: - UITableViewDataSource
 extension QuestionsTableManager: UITableViewDataSource {
 

@@ -4,7 +4,7 @@ import GetOfferCore
 final class MainItemPresenter {
 
     // MARK: - Public Properties
-    weak var view: MainItemViewInput?
+    weak var view: MainItemViewDelegate?
 
     // MARK: - Private Properties
     private let tableManager: TableManagerDelegate

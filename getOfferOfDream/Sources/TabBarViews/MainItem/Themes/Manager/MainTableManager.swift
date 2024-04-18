@@ -24,14 +24,6 @@ extension MainTableManager: TableManagerDelegate {
     }
 }
 
-// MARK: - MainTableManagerProtocol
-extension MainTableManager: TableManagerProtocol {
-
-    func updateTable() {
-        tableView?.reloadData()
-    }
-}
-
 // MARK: - UITableViewDataSource
 extension MainTableManager: UITableViewDataSource {
 

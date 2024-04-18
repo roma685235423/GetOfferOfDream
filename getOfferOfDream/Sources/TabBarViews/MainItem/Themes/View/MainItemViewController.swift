@@ -2,7 +2,7 @@ import UIKit
 import GetOfferUI
 
 // MARK: - MainItemViewController
-class MainItemViewController: UIViewController {
+final class MainItemViewController: UIViewController {
 
     // MARK: - Public Properties
     let tableView = UITableView(frame: .zero, style: .plain)
@@ -31,7 +31,7 @@ class MainItemViewController: UIViewController {
 
 }
 
-extension MainItemViewController: MainItemViewInput { }
+extension MainItemViewController: MainItemViewDelegate { }
 
 // MARK: - Private Methods
 private extension MainItemViewController {
