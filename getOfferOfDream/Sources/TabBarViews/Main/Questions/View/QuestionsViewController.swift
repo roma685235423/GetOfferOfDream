@@ -22,7 +22,7 @@ final class QuestionsViewController: UIViewController {
     // MARK: - Overrides Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .opaqueSeparator
+        view.backgroundColor = .whiteDynamic
         presenter?.viewDidLoad()
         view.addSubviews([tableView])
         setConstraints()

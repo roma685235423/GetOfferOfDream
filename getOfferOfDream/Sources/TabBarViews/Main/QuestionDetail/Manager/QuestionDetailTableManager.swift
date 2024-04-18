@@ -18,7 +18,6 @@ extension QuestionDetailTableManager: BaseTableManagerDelegate {
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
         self.tableView?.separatorStyle = .singleLine
-        self.tableView?.backgroundColor = UIColor.opaqueSeparator
     }
 }
 
