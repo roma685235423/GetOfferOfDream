@@ -24,13 +24,13 @@ extension QuestionsTableManager: TableManagerDelegate {
     }
 }
 
-// MARK: - Public Methods
-extension QuestionsTableManager: TableManagerProtocol {
-
-    func updateTable() {
-        tableView?.reloadData()
-    }
-}
+// MARK: - TableManagerProtocol
+// extension QuestionsTableManager: TableManagerProtocol {
+//
+//    func updateTable() {
+//        tableView?.reloadData()
+//    }
+// }
 
 // MARK: - UITableViewDataSource
 extension QuestionsTableManager: UITableViewDataSource {
