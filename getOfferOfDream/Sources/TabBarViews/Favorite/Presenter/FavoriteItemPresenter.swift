@@ -9,7 +9,7 @@ final class FavoriteItemPresenter {
 }
 
 // MARK: - FavoriteItemViewDelegate
-extension FavoriteItemPresenter: BasePresenterProtocol {
+extension FavoriteItemPresenter: BasePresenterDelegate {
 
     func viewDidLoad() { }
 }

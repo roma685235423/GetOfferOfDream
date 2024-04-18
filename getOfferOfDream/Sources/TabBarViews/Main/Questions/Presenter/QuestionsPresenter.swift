@@ -4,7 +4,7 @@ import GetOfferCore
 final class QuestionsPresenter {
 
     // MARK: - Public Properties
-    weak var view: QuestionsViewDelegate?
+    weak var view: BaseViewControllerProtocol?
 
     // MARK: - Private Properties
     private let tableManager: BaseTableManagerDelegate
@@ -19,7 +19,7 @@ final class QuestionsPresenter {
 }
 
 // MARK: - QuestionsViewDelegate
-extension QuestionsPresenter: QuestionsViewDelegate { }
+extension QuestionsPresenter: BaseViewControllerProtocol { }
 
 // MARK: - QuestionPresenterDelegate
 extension QuestionsPresenter: QuestionPresenterDelegate {
@@ -34,7 +34,7 @@ extension QuestionsPresenter: QuestionPresenterDelegate {
 }
 
 // MARK: - QuestionsPresenterProtocol
-extension QuestionsPresenter: BasePresenterProtocol {
+extension QuestionsPresenter: BasePresenterDelegate {
     func viewDidLoad() {
         createViewModel(questions: questions)
     }

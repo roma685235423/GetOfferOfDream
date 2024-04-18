@@ -8,10 +8,10 @@ final class QuestionsViewController: UIViewController {
     let tableView = UITableView(frame: .zero, style: .plain)
 
     // MARK: - Private Properties
-    private let presenter: BasePresenterProtocol?
+    private let presenter: BasePresenterDelegate?
 
     // MARK: - Initializers
-    init(presenter: BasePresenterProtocol) {
+    init(presenter: BasePresenterDelegate) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,7 +32,7 @@ final class QuestionsViewController: UIViewController {
 }
 
 // MARK: - QuestionsViewDelegate
-extension QuestionsViewController: QuestionsViewDelegate { }
+extension QuestionsViewController: BaseViewControllerProtocol { }
 
 // MARK: - Private Methods
 private extension QuestionsViewController {

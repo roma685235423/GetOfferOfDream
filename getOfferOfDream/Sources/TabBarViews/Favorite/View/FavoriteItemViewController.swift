@@ -6,9 +6,9 @@ import GetOfferCore
 class FavoriteItemViewController: UIViewController {
 
     // MARK: - Private Properties
-    private let presenter: BasePresenterProtocol
+    private let presenter: BasePresenterDelegate
 
-    init(presenter: BasePresenterProtocol) {
+    init(presenter: BasePresenterDelegate) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }

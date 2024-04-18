@@ -4,7 +4,7 @@ import GetOfferCore
 final class MainItemPresenter {
 
     // MARK: - Public Properties
-    weak var view: MainItemViewDelegate?
+    weak var view: BaseViewControllerProtocol?
 
     // MARK: - Private Properties
     private let tableManager: BaseTableManagerDelegate
@@ -30,7 +30,7 @@ extension MainItemPresenter: MainItemPresenterDelegate {
 }
 
 // MARK: - MainItemPresenterProtocol
-extension MainItemPresenter: BasePresenterProtocol {
+extension MainItemPresenter: BasePresenterDelegate {
     func viewDidLoad() {
         createViewModel(themes: themes)
     }

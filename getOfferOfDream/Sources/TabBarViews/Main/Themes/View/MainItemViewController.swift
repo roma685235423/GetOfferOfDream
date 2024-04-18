@@ -8,10 +8,10 @@ final class MainItemViewController: UIViewController {
     let tableView = UITableView(frame: .zero, style: .plain)
 
     // MARK: - Private Properties
-    private let presenter: BasePresenterProtocol?
+    private let presenter: BasePresenterDelegate?
 
     // MARK: - Initializers
-    init(presenter: BasePresenterProtocol) {
+    init(presenter: BasePresenterDelegate) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,7 +31,7 @@ final class MainItemViewController: UIViewController {
 
 }
 
-extension MainItemViewController: MainItemViewDelegate { }
+extension MainItemViewController: BaseViewControllerProtocol { }
 
 // MARK: - Private Methods
 private extension MainItemViewController {

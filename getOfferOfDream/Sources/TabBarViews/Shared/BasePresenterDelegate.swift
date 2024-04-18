@@ -1,5 +1,5 @@
 import Foundation
 
-protocol BasePresenterProtocol: AnyObject {
+protocol BasePresenterDelegate: AnyObject {
     func viewDidLoad()
 }
