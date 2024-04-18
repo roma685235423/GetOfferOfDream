@@ -55,6 +55,7 @@ extension QuestionsTableManager: UITableViewDelegate {
             let tappedCellModel: QuestionViewModel = presenter.getViewModelWith(indexPath: indexPath)
         else { return }
 
-        print("Did tap -> \(tappedCellModel.title)\n")
+        let model = QuestionDetailViewModel(title: tappedCellModel.title, sections: tappedCellModel.sections)
+        tappedCellModel.didTap(model)
     }
 }

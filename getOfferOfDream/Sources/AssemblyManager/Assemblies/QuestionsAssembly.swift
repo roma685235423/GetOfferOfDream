@@ -19,9 +19,14 @@ final class QuestionsAssembly: Assembly {
             QuestionsTableManager()
         }
 
+        Container.shared.register(service: QuestionsRouter.self) { _ in
+            QuestionsRouter()
+        }
+
         Container.shared.register(service: QuestionsPresenter.self) { resolver in
             let tableManager: QuestionsTableManager = resolver.resolve()
-            return QuestionsPresenter(tableManager: tableManager, questions: self.questions)
+            let router: QuestionsRouter = resolver.resolve()
+            return QuestionsPresenter(tableManager: tableManager, router: router, questions: self.questions)
         }
 
         Container.shared.register(service: QuestionsViewController.self) { resolver in
@@ -32,8 +37,10 @@ final class QuestionsAssembly: Assembly {
         @Dependency var view: QuestionsViewController
         @Dependency var presenter: QuestionsPresenter
         @Dependency var tableManager: QuestionsTableManager
+        @Dependency var router: QuestionsRouter
 
         presenter.view = view
+        router.view = view
         tableManager.presenter = presenter
         tableManager.setup(tableView: view.tableView)
     }

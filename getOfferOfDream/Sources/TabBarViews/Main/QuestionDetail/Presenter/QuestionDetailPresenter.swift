@@ -7,12 +7,12 @@ final class QuestionDetailPresenter {
 
     // MARK: - Private Properties
     private let tableManager: BaseTableManagerDelegate
-    private var viewModel: QuestionViewModel
+    private var questionDetailViewModel: QuestionDetailViewModel
 
     // MARK: - Initializers
-    init(tableManager: BaseTableManagerDelegate, viewModel: QuestionViewModel) {
+    init(tableManager: BaseTableManagerDelegate, viewModel: QuestionDetailViewModel) {
         self.tableManager = tableManager
-        self.viewModel = viewModel
+        self.questionDetailViewModel = viewModel
     }
 }
 
@@ -22,11 +22,11 @@ extension QuestionDetailPresenter: BaseViewControllerProtocol { }
 // MARK: - BaseTablePresenterDelegate
 extension QuestionDetailPresenter: BaseTablePresenterDelegate {
     func getViewModelsCount() -> Int {
-        return viewModel.sections.count
+        return questionDetailViewModel.sections.count
     }
 
     func getViewModelWith<T: ViewModel>(indexPath: IndexPath) -> T? {
-        let targetSectionViewModel: QuestionDetailSectionModel = viewModel.sections[indexPath.row]
+        let targetSectionViewModel: QuestionDetailSectionModel = questionDetailViewModel.sections[indexPath.row]
         return targetSectionViewModel as? T
     }
 }
@@ -34,6 +34,13 @@ extension QuestionDetailPresenter: BaseTablePresenterDelegate {
 // MARK: - BasePresenterDelegate
 extension QuestionDetailPresenter: BasePresenterDelegate {
     func viewDidLoad() {
+        createViewModel(question: questionDetailViewModel)
+    }
+}
+
+private extension QuestionDetailPresenter {
+
+    func createViewModel(question: QuestionDetailViewModel) {
         DispatchQueue.main.async { [weak self] in
             self?.tableManager.update()
         }

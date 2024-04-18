@@ -32,11 +32,11 @@ extension QuestionDetailTableManager: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let presenter = presenter,
-            let questionTitle: QuestionViewModel = presenter.getViewModelWith(indexPath: indexPath)
+            let question: QuestionDetailSectionModel = presenter.getViewModelWith(indexPath: indexPath)
         else { return UITableViewCell() }
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        let title = questionTitle.title
+        let title = question.text
         cell.textLabel?.text = title
         cell.textLabel?.textColor = .black
         cell.selectionStyle = .none

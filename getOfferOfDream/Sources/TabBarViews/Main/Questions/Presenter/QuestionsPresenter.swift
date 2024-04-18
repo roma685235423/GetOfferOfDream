@@ -7,12 +7,14 @@ final class QuestionsPresenter {
 
     // MARK: - Private Properties
     private let tableManager: BaseTableManagerDelegate
+    private let router: QuestionsRouter
     private var questions: [QuestionModel]
     private var viewModels: [QuestionViewModel] = []
 
     // MARK: - Initializers
-    init(tableManager: BaseTableManagerDelegate, questions: [QuestionModel]) {
+    init(tableManager: BaseTableManagerDelegate, router: QuestionsRouter, questions: [QuestionModel]) {
         self.tableManager = tableManager
+        self.router = router
         self.questions = questions
     }
 }
@@ -48,8 +50,9 @@ private extension QuestionsPresenter {
             let questionViewModel = QuestionViewModel(
                 title: question.title,
                 sections: question.sections
-            ) { _ in
-                print(#function)
+            ) { [weak self] question in
+                let targetQuestion = QuestionDetailViewModel(title: question.title, sections: question.sections)
+                self?.router.roteToDetails(with: targetQuestion)
             }
             self.viewModels.append(questionViewModel)
         }

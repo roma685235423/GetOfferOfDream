@@ -26,6 +26,7 @@ final class QuestionDetailViewController: UIViewController {
         view.backgroundColor = .systemBackground
         presenter?.viewDidLoad()
         view.addSubviews([tableView])
+        setConstraints()
     }
 }
 
@@ -33,7 +34,7 @@ final class QuestionDetailViewController: UIViewController {
 extension QuestionDetailViewController: BaseViewControllerProtocol { }
 
 // MARK: - Private Methods
-private extension MainItemViewController {
+private extension QuestionDetailViewController {
 
     func setConstraints() {
         NSLayoutConstraint.activate([
