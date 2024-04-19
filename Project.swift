@@ -44,6 +44,9 @@ extension SettingsDictionary {
 
 let project = Project(
     name: "getOfferOfDream",
+    packages: [
+        .remote(url: "https://github.com/onevcat/Kingfisher", requirement: .upToNextMajor(from: "7.11.0"))
+    ],
     settings: Settings.settings(
         base: SettingsDictionary().setProjectVersions(),
         defaultSettings: .recommended

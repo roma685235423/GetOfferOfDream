@@ -1,6 +1,6 @@
 import Foundation
 
-public class Constansts {
+public class Constants {
 
     // MARK: - Global
     public static let cornerRadius = CGFloat(8.0)
