@@ -19,7 +19,7 @@ extension MainTableManager: BaseTableManagerDelegate {
         self.tableView = tableView
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
-        self.tableView?.separatorStyle = .singleLine
+        self.tableView?.separatorStyle = .none
     }
 }
 
@@ -40,7 +40,6 @@ extension MainTableManager: UITableViewDataSource {
 
         let title = themeTitle.title
         cell.textLabel?.text = title
-        cell.textLabel?.textColor = .black
         cell.selectionStyle = .none
         return cell
     }

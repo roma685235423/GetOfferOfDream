@@ -19,7 +19,7 @@ extension QuestionsTableManager: BaseTableManagerDelegate {
         self.tableView = tableView
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
-        self.tableView?.separatorStyle = .singleLine
+        self.tableView?.separatorStyle = .none
     }
 }
 
@@ -39,7 +39,6 @@ extension QuestionsTableManager: UITableViewDataSource {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         let title = questionTitle.title
         cell.textLabel?.text = title
-        cell.textLabel?.textColor = .black
         cell.selectionStyle = .none
         return cell
     }

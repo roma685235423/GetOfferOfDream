@@ -17,12 +17,16 @@ extension QuestionDetailTableManager: BaseTableManagerDelegate {
         self.tableView = tableView
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
-        self.tableView?.separatorStyle = .singleLine
+        self.tableView?.separatorStyle = .none
+        self.tableView?.register(
+            QuestionDetailSegmentCell.self,
+            forCellReuseIdentifier: QuestionDetailSegmentCell.description()
+        )
     }
 }
 
 // MARK: - UITableViewDataSource
-extension QuestionDetailTableManager: UITableViewDataSource, UITableViewDelegate {
+extension QuestionDetailTableManager: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.getViewModelsCount() ?? 0
@@ -31,14 +35,21 @@ extension QuestionDetailTableManager: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let presenter = presenter,
-            let question: QuestionDetailSectionModel = presenter.getViewModelWith(indexPath: indexPath)
+            let question: QuestionDetailSectionModel = presenter.getViewModelWith(indexPath: indexPath),
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: QuestionDetailSegmentCell.description(),
+                for: indexPath
+            ) as? QuestionDetailSegmentCell
         else { return UITableViewCell() }
 
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        let title = question.text
-        cell.textLabel?.text = title
-        cell.textLabel?.textColor = .black
-        cell.selectionStyle = .none
+        cell.configure(with: question)
         return cell
+    }
+}
+
+extension QuestionDetailTableManager: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
 }

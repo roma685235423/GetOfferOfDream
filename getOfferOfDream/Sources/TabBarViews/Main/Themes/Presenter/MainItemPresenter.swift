@@ -60,7 +60,7 @@ private extension MainItemPresenter {
                 title: theme.title,
                 questions: questions
             ) { [weak self] questions in
-                self?.router.roteToQuestions(questions: questions)
+                self?.router.roteToQuestions(themeTitle: theme.title, questions: questions)
             }
             viewModels.append(themeModel)
         }

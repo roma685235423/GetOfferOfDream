@@ -1,5 +1,5 @@
 import Foundation
 
 protocol ThemesRouterProtocol {
-    func roteToQuestions(questions: [QuestionModel])
+    func roteToQuestions(themeTitle: String, questions: [QuestionModel])
 }

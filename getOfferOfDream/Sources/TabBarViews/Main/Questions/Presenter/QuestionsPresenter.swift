@@ -52,7 +52,7 @@ private extension QuestionsPresenter {
                 sections: question.sections
             ) { [weak self] question in
                 let targetQuestion = QuestionDetailViewModel(title: question.title, sections: question.sections)
-                self?.router.roteToDetails(with: targetQuestion)
+                self?.router.roteToDetails(questionTitle: question.title, with: targetQuestion)
             }
             self.viewModels.append(questionViewModel)
         }

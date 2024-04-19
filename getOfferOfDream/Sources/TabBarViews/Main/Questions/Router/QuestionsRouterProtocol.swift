@@ -1,5 +1,5 @@
 import Foundation
 
 protocol QuestionsRouterProtocol {
-    func roteToDetails(with model: QuestionDetailViewModel)
+    func roteToDetails(questionTitle: String, with model: QuestionDetailViewModel)
 }

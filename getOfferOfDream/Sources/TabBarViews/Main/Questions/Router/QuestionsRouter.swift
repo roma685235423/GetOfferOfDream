@@ -7,9 +7,10 @@ final class QuestionsRouter: QuestionsRouterProtocol {
     weak var view: UIViewController?
 
     // MARK: - Public Mehods
-    func roteToDetails(with model: QuestionDetailViewModel) {
+    func roteToDetails(questionTitle: String, with model: QuestionDetailViewModel) {
         QuestionDetailAssembly(questionModel: model).assemble()
         @Dependency var questiosDetailView: QuestionDetailViewController
+        questiosDetailView.title = questionTitle
         view?.navigationController?.pushViewController(questiosDetailView, animated: true)
     }
 }
