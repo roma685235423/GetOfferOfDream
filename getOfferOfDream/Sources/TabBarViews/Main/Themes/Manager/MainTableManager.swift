@@ -38,8 +38,7 @@ extension MainTableManager: UITableViewDataSource {
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
 
-        let title = themeTitle.title
-        cell.textLabel?.text = title
+        cell.textLabel?.text = themeTitle.theme.title
         cell.selectionStyle = .none
         return cell
     }
@@ -54,6 +53,6 @@ extension MainTableManager: UITableViewDelegate {
             let viewModel: ThemeViewModel = presenter.getViewModelWith(indexPath: indexPath)
         else { return }
 
-        viewModel.didTap(viewModel.questions)
+        viewModel.didTap(viewModel.theme.questions)
     }
 }

@@ -5,11 +5,11 @@ import GetOfferDI
 final class QuestionsAssembly: Assembly {
 
     // MARK: - Public Properties
-    var questions: [QuestionModel]
+    var theme: ThemeModel
 
     // MARK: - Initializers
-    init(questions: [QuestionModel]) {
-        self.questions = questions
+    init(questions: ThemeModel) {
+        self.theme = questions
     }
 
     // MARK: - Public Methods
@@ -26,7 +26,7 @@ final class QuestionsAssembly: Assembly {
         Container.shared.register(service: QuestionsPresenter.self) { resolver in
             let tableManager: QuestionsTableManager = resolver.resolve()
             let router: QuestionsRouter = resolver.resolve()
-            return QuestionsPresenter(tableManager: tableManager, router: router, questions: self.questions)
+            return QuestionsPresenter(tableManager: tableManager, router: router, questions: self.theme)
         }
 
         Container.shared.register(service: QuestionsViewController.self) { resolver in

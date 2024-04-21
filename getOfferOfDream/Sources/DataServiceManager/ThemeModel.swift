@@ -1,6 +1,6 @@
 import Foundation
 
-struct ThemeModel {
+struct ThemeModel: ViewModel {
     let title: String
     let questions: [QuestionModel]
 }

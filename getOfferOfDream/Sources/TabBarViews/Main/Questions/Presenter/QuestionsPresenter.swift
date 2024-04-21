@@ -8,11 +8,11 @@ final class QuestionsPresenter {
     // MARK: - Private Properties
     private let tableManager: BaseTableManagerDelegate
     private let router: QuestionsRouter
-    private var questions: [QuestionModel]
+    private var questions: ThemeModel
     private var viewModels: [QuestionViewModel] = []
 
     // MARK: - Initializers
-    init(tableManager: BaseTableManagerDelegate, router: QuestionsRouter, questions: [QuestionModel]) {
+    init(tableManager: BaseTableManagerDelegate, router: QuestionsRouter, questions: ThemeModel) {
         self.tableManager = tableManager
         self.router = router
         self.questions = questions
@@ -38,7 +38,7 @@ extension QuestionsPresenter: BaseTablePresenterDelegate {
 // MARK: - BasePresenterDelegate
 extension QuestionsPresenter: BasePresenterDelegate {
     func viewDidLoad() {
-        createViewModel(questions: questions)
+        createViewModel(questions: questions.questions)
     }
 }
 
@@ -51,8 +51,9 @@ private extension QuestionsPresenter {
                 title: question.title,
                 sections: question.sections
             ) { [weak self] question in
+                guard let self = self else { return }
                 let targetQuestion = QuestionDetailViewModel(title: question.title, sections: question.sections)
-                self?.router.roteToDetails(questionTitle: question.title, with: targetQuestion)
+                self.router.roteToDetails(themeTitle: self.questions.title, with: targetQuestion)
             }
             self.viewModels.append(questionViewModel)
         }

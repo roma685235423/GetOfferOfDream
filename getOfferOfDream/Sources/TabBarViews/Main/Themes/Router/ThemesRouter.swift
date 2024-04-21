@@ -7,10 +7,10 @@ final class ThemesRouter: ThemesRouterProtocol {
     weak var view: UIViewController?
 
     // MARK: - Public Mehods
-    func roteToQuestions(themeTitle: String, questions: [QuestionModel]) {
-        QuestionsAssembly.init(questions: questions).assemble()
+    func roteToQuestions(theme: ThemeModel) {
+        QuestionsAssembly.init(questions: theme).assemble()
         @Dependency var questionView: QuestionsViewController
-        questionView.title = themeTitle
+        questionView.title = theme.title
         view?.navigationController?.pushViewController(questionView, animated: true)
     }
 }

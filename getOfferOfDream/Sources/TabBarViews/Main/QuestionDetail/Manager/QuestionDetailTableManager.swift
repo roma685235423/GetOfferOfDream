@@ -4,10 +4,10 @@ final class QuestionDetailTableManager: NSObject {
 
     // MARK: - Public Properties
     weak var tableView: UITableView?
-    weak var presenter: BaseTablePresenterDelegate?
+    weak var presenter: QuestionTablePresenterDelegate?
 }
 
-// MARK: - MainTableDelegate
+// MARK: - BaseTableManagerDelegate
 extension QuestionDetailTableManager: BaseTableManagerDelegate {
     func update() {
         self.tableView?.reloadData()
@@ -44,6 +44,10 @@ extension QuestionDetailTableManager: UITableViewDataSource {
 
         cell.configure(with: question)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        presenter?.getQuestionHeader()
     }
 }
 

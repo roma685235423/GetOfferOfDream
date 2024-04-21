@@ -1,7 +1,6 @@
 import Foundation
 
 struct ThemeViewModel: ViewModel {
-    let title: String
-    let questions: [QuestionModel]
+    let theme: ThemeModel
     let didTap: ([QuestionModel]) -> Void
 }
