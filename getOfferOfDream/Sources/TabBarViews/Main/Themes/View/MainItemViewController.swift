@@ -27,6 +27,7 @@ final class MainItemViewController: UIViewController {
         presenter?.viewDidLoad()
         view.addSubviews([tableView])
         setConstraints()
+        self.title = "Список тем"
     }
 }
 

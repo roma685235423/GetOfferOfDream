@@ -22,6 +22,10 @@ extension QuestionDetailTableManager: BaseTableManagerDelegate {
             QuestionDetailSegmentCell.self,
             forCellReuseIdentifier: QuestionDetailSegmentCell.description()
         )
+        self.tableView?.register(
+            QuestionDetailHeader.self,
+            forHeaderFooterViewReuseIdentifier: QuestionDetailHeader.description()
+        )
     }
 }
 
@@ -45,15 +49,27 @@ extension QuestionDetailTableManager: UITableViewDataSource {
         cell.configure(with: question)
         return cell
     }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        presenter?.getQuestionHeader()
-    }
 }
 
 extension QuestionDetailTableManager: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard
+            let presenter = presenter,
+            let header = tableView.dequeueReusableHeaderFooterView(
+                withIdentifier: QuestionDetailHeader.description()
+            ) as? QuestionDetailHeader else {
+            return UIView()
+        }
+        header.configure(with: presenter.getQuestionHeader())
+        return header
     }
 }
