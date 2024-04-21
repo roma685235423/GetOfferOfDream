@@ -14,7 +14,7 @@ public final class GetOfferUI {
      */
     static public func calculateEqualWidth(forViewWidth viewWidth: CGFloat,
                                            numberOfElements: Int,
-                                           withSpacing spacing: CGFloat = Constansts.horizontalIndent) -> CGFloat {
+                                           withSpacing spacing: CGFloat = Constants.horizontalIndent) -> CGFloat {
         guard numberOfElements > 0 else { return 0 }
 
         let totalSpaceing = CGFloat(numberOfElements + 1) * spacing

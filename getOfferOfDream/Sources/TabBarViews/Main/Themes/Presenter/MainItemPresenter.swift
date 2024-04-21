@@ -45,22 +45,10 @@ private extension MainItemPresenter {
 
     func createViewModel(themes: [ThemeModel]) {
         for theme in themes {
-
-            var questions = [QuestionModel]()
-            for question in theme.questions {
-
-                let questionsModel = QuestionModel(
-                    title: question.title,
-                    sections: question.sections
-                )
-                questions.append(questionsModel)
-            }
-
             let themeModel = ThemeViewModel(
-                title: theme.title,
-                questions: questions
-            ) { [weak self] questions in
-                self?.router.roteToQuestions(questions: questions)
+                theme: theme
+            ) { [weak self] _ in
+                self?.router.roteToQuestions(theme: theme)
             }
             viewModels.append(themeModel)
         }

@@ -4,7 +4,7 @@ public extension UIButton {
 
     static func withStandardConfiguration(title text: String) -> UIButton {
         let button = UIButton()
-        button.layer.cornerRadius = Constansts.cornerRadius
+        button.layer.cornerRadius = Constants.cornerRadius
 
         button.setTitle(text, for: .normal)
         button.titleLabel?.font = UIFont.captionRegular

@@ -19,7 +19,7 @@ extension MainTableManager: BaseTableManagerDelegate {
         self.tableView = tableView
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
-        self.tableView?.separatorStyle = .singleLine
+        self.tableView?.separatorStyle = .none
     }
 }
 
@@ -38,9 +38,7 @@ extension MainTableManager: UITableViewDataSource {
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
 
-        let title = themeTitle.title
-        cell.textLabel?.text = title
-        cell.textLabel?.textColor = .black
+        cell.textLabel?.text = themeTitle.theme.title
         cell.selectionStyle = .none
         return cell
     }
@@ -55,6 +53,6 @@ extension MainTableManager: UITableViewDelegate {
             let viewModel: ThemeViewModel = presenter.getViewModelWith(indexPath: indexPath)
         else { return }
 
-        viewModel.didTap(viewModel.questions)
+        viewModel.didTap(viewModel.theme.questions)
     }
 }

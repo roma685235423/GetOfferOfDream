@@ -20,7 +20,11 @@ final class QuestionDetailPresenter {
 extension QuestionDetailPresenter: BaseViewControllerProtocol { }
 
 // MARK: - BaseTablePresenterDelegate
-extension QuestionDetailPresenter: BaseTablePresenterDelegate {
+extension QuestionDetailPresenter: QuestionTablePresenterDelegate {
+    func getQuestionHeader() -> String {
+        questionDetailViewModel.title
+    }
+
     func getViewModelsCount() -> Int {
         return questionDetailViewModel.sections.count
     }

@@ -37,8 +37,8 @@ private extension QuestionsViewController {
 
     func setConstraints() {
         NSLayoutConstraint.activate([
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Constansts.horizontalIndent),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Constansts.horizontalIndent),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Constants.horizontalIndent),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Constants.horizontalIndent),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])

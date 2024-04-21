@@ -21,6 +21,7 @@ import SwiftUI
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum GetOfferOfDreamAsset {
     public static let accentColor = GetOfferOfDreamColors(name: "AccentColor")
+    public static let testImage1 = GetOfferOfDreamImages(name: "testImage1")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
@@ -85,6 +86,58 @@ public extension SwiftUI.Color {
     init(asset: GetOfferOfDreamColors) {
         let bundle = GetOfferOfDreamResources.bundle
         self.init(asset.name, bundle: bundle)
+    }
+}
+#endif
+
+public struct GetOfferOfDreamImages {
+    public fileprivate(set) var name: String
+
+    #if os(macOS)
+    public typealias Image = NSImage
+    #elseif os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
+    public typealias Image = UIImage
+    #endif
+
+    public var image: Image {
+        let bundle = GetOfferOfDreamResources.bundle
+        #if os(iOS) || os(tvOS) || os(visionOS)
+        let image = Image(named: name, in: bundle, compatibleWith: nil)
+        #elseif os(macOS)
+        let image = bundle.image(forResource: NSImage.Name(name))
+        #elseif os(watchOS)
+        let image = Image(named: name)
+        #endif
+        guard let result = image else {
+            fatalError("Unable to load image asset named \(name).")
+        }
+        return result
+    }
+
+    #if canImport(SwiftUI)
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
+    public var swiftUIImage: SwiftUI.Image {
+        SwiftUI.Image(asset: self)
+    }
+    #endif
+}
+
+#if canImport(SwiftUI)
+@available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, visionOS 1.0, *)
+public extension SwiftUI.Image {
+    init(asset: GetOfferOfDreamImages) {
+        let bundle = GetOfferOfDreamResources.bundle
+        self.init(asset.name, bundle: bundle)
+    }
+
+    init(asset: GetOfferOfDreamImages, label: Text) {
+        let bundle = GetOfferOfDreamResources.bundle
+        self.init(asset.name, bundle: bundle, label: label)
+    }
+
+    init(decorative asset: GetOfferOfDreamImages) {
+        let bundle = GetOfferOfDreamResources.bundle
+        self.init(decorative: asset.name, bundle: bundle)
     }
 }
 #endif
