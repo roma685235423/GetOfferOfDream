@@ -47,10 +47,20 @@ extension QuestionDetailTableManager: UITableViewDataSource {
         else { return UITableViewCell() }
 
         cell.configure(with: question)
+
+        switch indexPath.row {
+        case 0:
+            cell.setImage(image: GetOfferOfDreamAsset.testImage2.image)
+        case 1:
+            cell.setImage(image: GetOfferOfDreamAsset.testImage1.image)
+        default:
+            break
+        }
         return cell
     }
 }
 
+// MARK: - UITableViewDelegate
 extension QuestionDetailTableManager: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

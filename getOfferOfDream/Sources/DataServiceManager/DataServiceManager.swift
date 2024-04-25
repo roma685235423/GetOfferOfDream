@@ -27,7 +27,7 @@ struct DataServiceManager {
                             В iOS используется, например, для обработки событий и
                             управления жизненным циклом элементов интерфейса.
                             """,
-                            imageURLString: nil
+                            imageURLString: "ghv"
                         )
 
                     ]

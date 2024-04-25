@@ -22,6 +22,7 @@ import SwiftUI
 public enum GetOfferOfDreamAsset {
     public static let accentColor = GetOfferOfDreamColors(name: "AccentColor")
     public static let testImage1 = GetOfferOfDreamImages(name: "testImage1")
+    public static let testImage2 = GetOfferOfDreamImages(name: "testImage2")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
