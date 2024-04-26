@@ -23,7 +23,7 @@ final class QuestionDetailSegmentCell: UITableViewCell {
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = .captionRegular
+        label.font = .headlineRegular
         label.textColor = .gray
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -62,8 +62,12 @@ extension QuestionDetailSegmentCell {
 
     func setImage(image: UIImage) {
         pictureView.image = image
+        let imageSize = image.size
+        let aspectRatio = imageSize.width / imageSize.height
+        let newWidth = contentView.bounds.width
+        let newHeight = newWidth / aspectRatio
+        pictureView.frame.size = CGSize(width: newWidth, height: newHeight)
         setConstraintsWithImage()
-        layoutIfNeeded()
     }
 }
 
@@ -93,29 +97,17 @@ private extension QuestionDetailSegmentCell {
             pictureView.leftAnchor.constraint(greaterThanOrEqualTo: upperTextLabel.leftAnchor),
             pictureView.rightAnchor.constraint(lessThanOrEqualTo: upperTextLabel.rightAnchor),
             pictureView.topAnchor.constraint(equalTo: upperTextLabel.bottomAnchor,
-                                             constant: Constants.verticalIndent/2),
+                                             constant: Constants.verticalIndent),
+            pictureView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            pictureView.heightAnchor.constraint(equalToConstant: pictureView.frame.size.height),
 
             descriptionLabel.leftAnchor.constraint(equalTo: pictureView.leftAnchor),
             descriptionLabel.rightAnchor.constraint(equalTo: pictureView.rightAnchor),
             descriptionLabel.topAnchor.constraint(
                 equalTo: pictureView.bottomAnchor,
-                constant: Constants.verticalIndent
+                constant: Constants.verticalIndent / 2
             ),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }
-
-//            var descriptionLabelVerticalOffset = CGFloat(0.0)
-//            if let imageSize = pictureView.image?.size {
-//                let aspectRatio = CGFloat(imageSize.height / imageSize.width)
-//
-//                if imageSize.height <= imageSize.width {
-//                    let imageViewWidth = self.frame.width - Constants.horizontalIndent * 2
-//                    let imageViewHeight = imageViewWidth * aspectRatio
-//
-//                    descriptionLabelVerticalOffset = (imageViewHeight / 2) + Constants.verticalIndent
-//                } else {
-//
-//                }
-//            }
