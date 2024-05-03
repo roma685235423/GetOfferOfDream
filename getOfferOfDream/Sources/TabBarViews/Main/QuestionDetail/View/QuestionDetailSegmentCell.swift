@@ -12,11 +12,23 @@ final class QuestionDetailSegmentCell: UITableViewCell {
         return label
     }()
 
-    private let image: UIImageView = {
+    private let pictureView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = GetOfferOfDreamAsset.testImage1.image
+        imageView.sizeToFit()
         imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(origin: .zero, size: CGSize(width: 250, height: 250))
+        imageView.clipsToBounds = true
         return imageView
+    }()
+
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .headlineRegular
+        label.textColor = .gray
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.text = "Рис. 1"
+        return label
     }()
 
     // MARK: - Initializers
@@ -24,17 +36,19 @@ final class QuestionDetailSegmentCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         contentView.addSubviews([upperTextLabel])
-        setConstraints(withImage: false)
+        setMainConstraints()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Overrides Methods
     override func prepareForReuse() {
         super.prepareForReuse()
         upperTextLabel.text = ""
-        image.removeFromSuperview()
+        pictureView.removeFromSuperview()
+        descriptionLabel.removeFromSuperview()
     }
 }
 
@@ -43,46 +57,57 @@ extension QuestionDetailSegmentCell {
 
     func configure(with model: QuestionDetailSectionModel) {
         upperTextLabel.text = model.text
-        let isNeedImage = model.imageURLString == nil ? false : true
-        setConstraints(withImage: isNeedImage)
         layoutIfNeeded()
+    }
+
+    func setImage(image: UIImage) {
+        pictureView.image = image
+        let imageSize = image.size
+        let aspectRatio = imageSize.width / imageSize.height
+        let newWidth = contentView.bounds.width
+        let newHeight = newWidth / aspectRatio
+        pictureView.frame.size = CGSize(width: newWidth, height: newHeight)
+        setConstraintsWithImage()
     }
 }
 
 // MARK: - Private Methods
 private extension QuestionDetailSegmentCell {
 
-    func setConstraints(withImage: Bool) {
+    func setMainConstraints() {
         contentView.removeConstraints(contentView.constraints)
 
-        if !withImage {
-            NSLayoutConstraint.activate([
-                upperTextLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-                upperTextLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-                upperTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-                upperTextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-            ])
-        } else {
-            contentView.addSubviews([image])
-            NSLayoutConstraint.activate([
-                upperTextLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-                upperTextLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-                upperTextLabel.topAnchor.constraint(
-                    equalTo: contentView.topAnchor,
-                    constant: Constants.verticalIndent/2
-                ),
+        NSLayoutConstraint.activate([
+            upperTextLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            upperTextLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            upperTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            upperTextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+    }
 
-                image.topAnchor.constraint(
-                    equalTo: upperTextLabel.bottomAnchor,
-                    constant: Constants.verticalIndent/2
-                ),
-                image.leftAnchor.constraint(equalTo: upperTextLabel.leftAnchor),
-                image.rightAnchor.constraint(equalTo: upperTextLabel.rightAnchor),
-                image.bottomAnchor.constraint(
-                    equalTo: contentView.bottomAnchor,
-                    constant: -Constants.verticalIndent/2
-                )
-            ])
-        }
+    func setConstraintsWithImage() {
+        contentView.removeConstraints(contentView.constraints)
+        contentView.addSubviews([pictureView, descriptionLabel])
+
+        NSLayoutConstraint.activate([
+            upperTextLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            upperTextLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            upperTextLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+
+            pictureView.leftAnchor.constraint(greaterThanOrEqualTo: upperTextLabel.leftAnchor),
+            pictureView.rightAnchor.constraint(lessThanOrEqualTo: upperTextLabel.rightAnchor),
+            pictureView.topAnchor.constraint(equalTo: upperTextLabel.bottomAnchor,
+                                             constant: Constants.verticalIndent),
+            pictureView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            pictureView.heightAnchor.constraint(equalToConstant: pictureView.frame.size.height),
+
+            descriptionLabel.leftAnchor.constraint(equalTo: pictureView.leftAnchor),
+            descriptionLabel.rightAnchor.constraint(equalTo: pictureView.rightAnchor),
+            descriptionLabel.topAnchor.constraint(
+                equalTo: pictureView.bottomAnchor,
+                constant: Constants.verticalIndent / 2
+            ),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
 }

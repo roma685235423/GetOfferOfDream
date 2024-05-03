@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:getOfferOfDream.xcodeproj">
+      location = "group:GetOfferOfDream.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:GetOfferCore/GetOfferCore.xcodeproj">

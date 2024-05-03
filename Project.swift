@@ -14,14 +14,14 @@ fi
 """
 
 let target = Target.target(
-    name: "getOfferOfDream",
+    name: "GetOfferOfDream",
     destinations: .iOS,
     product: .app,
-    bundleId: "roman.boiko.getOfferOfDream",
+    bundleId: "roman.boiko.GetOfferOfDream",
     deploymentTargets: .iOS("15.0"),
-    infoPlist: "getOfferOfDream/Info.plist",
-    sources: ["getOfferOfDream/Sources/**"],
-    resources: ["getOfferOfDream/Resources/**"],
+    infoPlist: "GetOfferOfDream/Info.plist",
+    sources: ["GetOfferOfDream/Sources/**"],
+    resources: ["GetOfferOfDream/Resources/**"],
     scripts: [TargetScript.post(script: swiftLintScript, name: "swiftLintScript")],
     dependencies: [
         .project(target: "GetOfferCore", path: "GetOfferCore"),
@@ -43,7 +43,7 @@ extension SettingsDictionary {
 }
 
 let project = Project(
-    name: "getOfferOfDream",
+    name: "GetOfferOfDream",
     packages: [
         .remote(url: "https://github.com/onevcat/Kingfisher", requirement: .upToNextMajor(from: "7.11.0"))
     ],

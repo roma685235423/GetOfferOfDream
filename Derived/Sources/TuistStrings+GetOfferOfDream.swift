@@ -19,10 +19,10 @@ public enum GetOfferOfDreamStrings {
 // MARK: - Implementation Details
 
 extension GetOfferOfDreamStrings {
-    private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-        let format = GetOfferOfDreamResources.bundle.localizedString(forKey: key, value: nil, table: table)
-        return String(format: format, locale: Locale.current, arguments: args)
-    }
+  private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+    let format = GetOfferOfDreamResources.bundle.localizedString(forKey: key, value: nil, table: table)
+    return String(format: format, locale: Locale.current, arguments: args)
+  }
 }
 
 // swiftlint:disable convenience_type

@@ -56,10 +56,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0BCBB5C815ADDC105A00E0AE"
-               BuildableName = "GetOfferUI.framework"
-               BlueprintName = "GetOfferUI"
-               ReferencedContainer = "container:GetOfferUI/GetOfferUI.xcodeproj">
+               BlueprintIdentifier = "E54A0730A0A9712501A8A3D9"
+               BuildableName = "GetOfferOfDream.app"
+               BlueprintName = "GetOfferOfDream"
+               ReferencedContainer = "container:GetOfferOfDream.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -70,10 +70,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DC49FC1B417C309F7EE87AD4"
-               BuildableName = "getOfferOfDream.app"
-               BlueprintName = "getOfferOfDream"
-               ReferencedContainer = "container:getOfferOfDream.xcodeproj">
+               BlueprintIdentifier = "0BCBB5C815ADDC105A00E0AE"
+               BuildableName = "GetOfferUI.framework"
+               BlueprintName = "GetOfferUI"
+               ReferencedContainer = "container:GetOfferUI/GetOfferUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
